@@ -64,52 +64,154 @@
 #           destination: test-results
 #
 
+# version: 2
+# jobs:
+#   build:
+#     working_directory: ~/ff_main/fantasy_fortuneteller
+#     docker:
+#       - image: circleci/ruby:2.4.1
+#         environment:
+#           PGHOST: localhost
+#           PGUSER: fantasy_fortuneteller
+#           RAILS_ENV: test
+#       - image: postgres:9.5
+#         environment:
+#           POSTGRES_USER: fantasy_fortuneteller
+#           POSTGRES_DB: fantasy_fortuneteller_test
+#           POSTGRES_PASSWORD: ""
+#     steps:
+#       - checkout
+#
+#       # Restore Cached Dependencies
+#       - type: cache-restore
+#         name: Restore bundle cache
+#         key: your-app-name-{{ checksum "Gemfile.lock" }}
+#
+#       # Bundle install dependencies
+#       - run:
+#           name: install dependencies
+#           command: |
+#             gem update --system
+#             gem install bundler
+#       # - run: bundle install --path vendor/bundle
+#
+#       # Cache Dependencies
+#       - type: cache-save
+#         name: Store bundle cache
+#         key: your-app-name-{{ checksum "Gemfile.lock" }}
+#         paths:
+#           - vendor/bundle
+#
+#       # Wait for DB
+#       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+#
+#       # Setup the environment
+#       - run: cp .sample.env .env
+#
+#       # Setup the database
+#       - run: bundle exec rake db:setup
+#
+#       # Run the tests
+#       - run: bundle exec rake
+
+
 version: 2
+
+references:
+  default_docker_ruby_executor: &default_docker_ruby_executor
+    image: circleci/ruby:2.4.1
+    environment:
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: vendor/bundle
+      PGHOST: 127.0.0.1
+      PGUSER: circleci-demo-ruby
+      PGPASSWORD: ""
+      RAILS_ENV: test
+  postgres: &postgres
+    image: circleci/postgres:9.5-alpine
+    environment:
+      POSTGRES_USER: circleci-demo-ruby
+      POSTGRES_DB: rails_blog_test
+      POSTGRES_PASSWORD: ""
+
 jobs:
   build:
-    working_directory: ~/ff_main/fantasy_fortuneteller
     docker:
-      - image: circleci/ruby:2.4.1
-        environment:
-          PGHOST: localhost
-          PGUSER: fantasy_fortuneteller
-          RAILS_ENV: test
-      - image: postgres:9.5
-        environment:
-          POSTGRES_USER: fantasy_fortuneteller
-          POSTGRES_DB: fantasy_fortuneteller_test
-          POSTGRES_PASSWORD: ""
+      - *default_docker_ruby_executor
     steps:
       - checkout
-
-      # Restore Cached Dependencies
-      - type: cache-restore
-        name: Restore bundle cache
-        key: your-app-name-{{ checksum "Gemfile.lock" }}
-
-      # Bundle install dependencies
+      # Which version of bundler?
       - run:
-          name: install dependencies
+          name: Which bundler?
+          command: bundle -v
+      # bundle cache
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v2-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      # Store bundle cache
+      - save_cache:
+          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      # Only necessary if app uses webpacker or yarn in some other way
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+      # Store yarn / webpacker cache
+      - save_cache:
+          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+  test:
+    parallelism: 3
+    docker:
+      - *default_docker_ruby_executor
+      - *postgres
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v2-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      # Run rspec in parallel
+      - run:
           command: |
-            gem update --system
-            gem install bundler
-      # - run: bundle install --path vendor/bundle
+            mkdir /tmp/test-results
+            TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+            bundle exec rspec $TESTFILES --profile 10 --format RspecJunitFormatter --out /tmp/test-results/rspec.xml --format progress
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
 
-      # Cache Dependencies
-      - type: cache-save
-        name: Store bundle cache
-        key: your-app-name-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
-
-      # Wait for DB
-      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      # Setup the environment
-      - run: cp .sample.env .env
-
-      # Setup the database
-      - run: bundle exec rake db:setup
-
-      # Run the tests
-      - run: bundle exec rake
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build

@@ -207,6 +207,8 @@ jobs:
           name: Database setup
           command: |
             bundle install
+            gem update --system
+            gem install bundler
             bundle exec rake db:schema:load --trace
       # Run rspec in parallel
       - run:

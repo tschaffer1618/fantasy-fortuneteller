@@ -88,7 +88,12 @@ jobs:
         key: your-app-name-{{ checksum "Gemfile.lock" }}
 
       # Bundle install dependencies
-      - run: bundle install --path vendor/bundle
+      - run:
+          name: install dependencies
+          command: |
+            gem update --system
+            gem install bundler
+      # - run: bundle install --path vendor/bundle
 
       # Cache Dependencies
       - type: cache-save

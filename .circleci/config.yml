@@ -39,11 +39,11 @@ jobs:
 
       # Database setup
       - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      # - run: bundle exec rake db:schema:load
 
       # run tests!
       - run:
-          name: run tests
+          name: bundle exec rake
           command: |
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \

@@ -50,6 +50,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'shoulda-matchers'
   gem 'selenium-webdriver'
+  gem 'rspec_junit_formatter'
 end
 
 group :test do

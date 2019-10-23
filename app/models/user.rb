@@ -14,4 +14,8 @@ class User < ApplicationRecord
 			user.save!
 		end
 	end
+
+  def verified?
+    verified == true
+  end
 end

@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-10-22T18:55:14-06:00">2019-10-22T18:55:14-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-10-22T19:49:56-06:00">2019-10-22T19:49:56-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">20.83%</span></span>
+    (<span class="covered_percent"><span class="red">27.27%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.21
+         0.27
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>9</b> files in total.
-    <b>24</b> relevant lines. 
-    <span class="green"><b>5</b> lines covered</span> and
-    <span class="red"><b>19</b> lines missed </span>
+    <b>10</b> files in total.
+    <b>33</b> relevant lines. 
+    <span class="green"><b>9</b> lines covered</span> and
+    <span class="red"><b>24</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -132,12 +132,22 @@
       
       <tr>
         <td class="strong"><a href="#b85707612d2d3871c7052076690c529dee1f44dd" class="src_link" title="app/models/application_record.rb">app/models/application_record.rb</a></td>
-        <td class="red strong">0.0 %</td>
+        <td class="green strong">100.0 %</td>
         <td>3</td>
-        <td>3</td>
+        <td>2</td>
+        <td>2</td>
         <td>0</td>
-        <td>3</td>
-        <td>0.0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#1f1a8848c5ca3d7db92cd588632c4a40fffeb3c0" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
+        <td class="red strong">20.0 %</td>
+        <td>13</td>
+        <td>10</td>
+        <td>2</td>
+        <td>8</td>
+        <td>0.2</td>
       </tr>
       
     </tbody>
@@ -273,20 +283,20 @@
           <div class="file_list_container" id="Models">
   <h2>
     <span class="group_name">Models</span>
-    (<span class="covered_percent"><span class="red">0.0%</span></span>
+    (<span class="covered_percent"><span class="red">33.33%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.0
+         0.33
        </span>
     </span> hits/line)
   </h2>
   <a name="Models"></a>
   <div>
-    <b>1</b> files in total.
-    <b>3</b> relevant lines. 
-    <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>3</b> lines missed </span>
+    <b>2</b> files in total.
+    <b>12</b> relevant lines. 
+    <span class="green"><b>4</b> lines covered</span> and
+    <span class="red"><b>8</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -304,12 +314,22 @@
       
       <tr>
         <td class="strong"><a href="#b85707612d2d3871c7052076690c529dee1f44dd" class="src_link" title="app/models/application_record.rb">app/models/application_record.rb</a></td>
-        <td class="red strong">0.0 %</td>
+        <td class="green strong">100.0 %</td>
         <td>3</td>
-        <td>3</td>
+        <td>2</td>
+        <td>2</td>
         <td>0</td>
-        <td>3</td>
-        <td>0.0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#1f1a8848c5ca3d7db92cd588632c4a40fffeb3c0" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
+        <td class="red strong">20.0 %</td>
+        <td>13</td>
+        <td>10</td>
+        <td>2</td>
+        <td>8</td>
+        <td>0.2</td>
       </tr>
       
     </tbody>
@@ -840,30 +860,127 @@
         <div class="source_table" id="b85707612d2d3871c7052076690c529dee1f44dd">
   <div class="header">
     <h3>app/models/application_record.rb</h3>
-    <h4><span class="red">0.0 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>3</b> relevant lines. 
-      <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>3</b> lines missed.</span>
+      <b>2</b> relevant lines. 
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
   <pre>
     <ol>
       
-        <li class="missed" data-hits="0" data-linenumber="1">
-          
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
           
           <code class="ruby">class ApplicationRecord &lt; ActiveRecord::Base</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="2">
-          
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
           
           <code class="ruby">  self.abstract_class = true</code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="1f1a8848c5ca3d7db92cd588632c4a40fffeb3c0">
+  <div class="header">
+    <h3>app/models/user.rb</h3>
+    <h4><span class="red">20.0 %</span> covered</h4>
+    <div>
+      <b>10</b> relevant lines. 
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>8</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class User &lt; ApplicationRecord</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def self.find_or_create_from_auth_hash(auth)</code>
+        </li>
+      
         <li class="missed" data-hits="0" data-linenumber="3">
+          
+          
+          <code class="ruby">		where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="4">
+          
+          
+          <code class="ruby">			user.provider = auth.provider</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="5">
+          
+          
+          <code class="ruby">			user.uid = auth.uid</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="6">
+          
+          
+          <code class="ruby">			user.first_name = auth.info.first_name</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="7">
+          
+          
+          <code class="ruby">			user.last_name = auth.info.last_name</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="8">
+          
+          
+          <code class="ruby">			user.email = auth.info.email</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="9">
+          
+          
+          <code class="ruby">			user.picture = auth.info.image</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="10">
+          
+          
+          <code class="ruby">			user.save!</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">		end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">	end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
           
           
           <code class="ruby">end</code>

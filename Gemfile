@@ -38,7 +38,10 @@ gem 'figaro'
 gem 'faker'
 gem 'factory_bot_rails'
 gem 'rubocop', '~> 0.75.0', require: false
+<<<<<<< HEAD
 gem 'omniauth-oauth2'
+=======
+>>>>>>> 6c1e740d23f98834179d19962b54f4b7c8943471
 gem 'omniauth-google-oauth2'
 
 group :development, :test do
@@ -50,6 +53,8 @@ group :development, :test do
   gem 'capybara'
   gem 'simplecov'
   gem 'shoulda-matchers'
+  gem 'selenium-webdriver'
+  gem 'rspec_junit_formatter'
 end
 
 group :test do
@@ -63,6 +68,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring', '~> 2.0.2'
 end
 
 

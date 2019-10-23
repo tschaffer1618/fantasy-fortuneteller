@@ -1,10 +1,30 @@
-language: ruby
-rvm:
- - 2.4.1
-cache: bundler
 services:
-  - postgresql
+    - postgresql
+
+
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
+    - psql -c 'create database fantasy_fortuneteller_test;' -U postgres
+    - cp config/database.yml.travis config/database.yml
+
+language: ruby
+
+rvm:
+    - 2.4.1
+
 script:
-  - bundle exec rspec
+    - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
+    - bundle exec rspec
+# addons:
+#   postgresql: 11.5
+# language: ruby
+# rvm:
+#  - 2.4.1
+# cache: bundler
+# services:
+#   - postgresql
+# before_script:
+#   - cp config/database.yml.travis config/database.yml
+#   - psql -c 'create database fantasy_fortuneteller_test;' -U postgres
+# script:
+#   - bundle exec rails db:migrate RAILS_ENV=test
+#   - bundle exec rspec

@@ -6,4 +6,14 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
   get 'auth/failure', to: redirect('/')
+
+  namespace :user do
+    resources :teams, only: [:index, :show]
+  end
+
+  get '/leaguestats', to: 'stats#index'
+
+  resources :players, only: [:index]
+
+  get '/profile', to: 'users#show'
 end

@@ -4,7 +4,11 @@ class SessionsController < ApplicationController
 
     @user = User.find_or_create_from_auth_hash(request.env["omniauth.auth"])
     session[:user_id] = @user.id
-    redirect_to root_path
+    if @user.verified?
+      redirect_to root_path
+    else
+      
+    end
   end
 
   def destroy

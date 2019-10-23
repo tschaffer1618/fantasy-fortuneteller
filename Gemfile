@@ -38,6 +38,7 @@ gem 'figaro'
 gem 'faker'
 gem 'factory_bot_rails'
 gem 'rubocop', '~> 0.75.0', require: false
+gem 'omniauth-oauth2'
 gem 'omniauth-google-oauth2'
 
 group :development, :test do
@@ -54,6 +55,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
   gem 'webmock'
   gem 'vcr'
 end

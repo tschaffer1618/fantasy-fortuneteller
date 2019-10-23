@@ -38,7 +38,7 @@ gem 'figaro'
 gem 'faker'
 gem 'factory_bot_rails'
 gem 'rubocop', '~> 0.75.0', require: false
-gem 'omniauth-google-oauth2' 
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,6 +52,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
   gem 'webmock'
   gem 'vcr'
 end

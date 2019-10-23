@@ -38,10 +38,7 @@ gem 'figaro'
 gem 'faker'
 gem 'factory_bot_rails'
 gem 'rubocop', '~> 0.75.0', require: false
-<<<<<<< HEAD
 gem 'omniauth-oauth2'
-=======
->>>>>>> 6c1e740d23f98834179d19962b54f4b7c8943471
 gem 'omniauth-google-oauth2'
 
 group :development, :test do

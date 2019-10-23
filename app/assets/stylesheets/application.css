@@ -14,4 +14,9 @@
  *= require_self
  */
 
- 
+.user-login {
+  font-size: 1.5em;
+}
+ .welcome-message {
+   color: white;
+ }

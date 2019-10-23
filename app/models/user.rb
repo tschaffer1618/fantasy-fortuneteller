@@ -6,7 +6,6 @@ class User < ApplicationRecord
 			user.uid = auth[:uid]
 			user.first_name = auth[:info][:first_name]
 			user.last_name = auth[:info][:last_name]
-      # binding.pry
 			user.email = auth[:info][:email]
       user.google_token = auth[:credentials][:token]
       user.google_refresh_token = auth[:credentials][:refresh_token]

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it "creates or updates itself from an oauth hash" do
+  it "creates itself from an oauth hash" do
     auth = {
       provider: "google",
       uid: "12345678910",
@@ -27,5 +27,32 @@ RSpec.describe User, type: :model do
     expect(new_user.google_token).to eq("abcdefg12345")
     expect(new_user.google_refresh_token).to eq("12345abcdefg")
     expect(new_user.google_oauth_expires_at).to eq(auth[:credentials][:expires_at])
+  end
+  it "updates itself from an oauth hash" do
+    auth = {
+      provider: "google",
+      uid: "12345678910",
+      info: {
+        email: "luke@gmail.com",
+        first_name: "Luke",
+        last_name: "Latack"
+      },
+      credentials: {
+        token: "abcdefg12345",
+        refresh_token: "12345abcdefg",
+        expires_at: DateTime.now
+      }
+    }
+    User.find_or_create_from_auth_hash(auth)
+    updated_user = User.first
+
+    expect(updated_user.provider).to eq("google")
+    expect(updated_user.uid).to eq("12345678910")
+    expect(updated_user.email).to eq("luke@gmail.com")
+    expect(updated_user.first_name).to eq("Luke")
+    expect(updated_user.last_name).to eq("Latack")
+    expect(updated_user.google_token).to eq("abcdefg12345")
+    expect(updated_user.google_refresh_token).to eq("12345abcdefg")
+    expect(updated_user.google_oauth_expires_at).to eq(auth[:credentials][:expires_at])
   end
 end

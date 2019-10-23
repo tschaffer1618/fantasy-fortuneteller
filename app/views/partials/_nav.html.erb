@@ -3,6 +3,14 @@
     <img src="/assets/crystal_ball_3.jpg" width="60" height="47" class="d-inline-block align-top" alt="Crystal Ball">
     Fantasy FortuneTeller
   </a>
+  <section class="user-login">
+    <% if current_user %>
+      <h3>Welcome, <%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
+      <%= link_to "Logout", logout_path %>
+    <% else %>
+      <%= link_to "Sign in with Google", "/auth/google" %>
+    <% end %>
+  </section>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

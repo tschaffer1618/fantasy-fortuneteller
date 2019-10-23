@@ -6,6 +6,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     # this line was added to get rid of OmniAuth::Strategies::OAuth2::CallbackError
     # csrf_detected, may need different appraoch
     # provider_ignores_state: true,
+    #test to find out if line 10 is necessary
     :skip_jwt => true,
     :prompt => "select_account",
     :image_aspect_ratio => "square",

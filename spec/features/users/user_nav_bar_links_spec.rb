@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "A logged in user" do
   before(:each) do
-    @user = create(:user)
+    @user = create(:user, user_name: "fft")
     @team = @user.teams.create(name: "What The Flacco")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end

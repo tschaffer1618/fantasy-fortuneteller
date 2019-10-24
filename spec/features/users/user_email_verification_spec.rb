@@ -11,7 +11,6 @@ describe 'email verification' do
     expect(page).to have_content('This account has not been verified. Please check your email.')
 
     visit "verification/#{user.id}"
-
     user = User.last
 
     expect(page).to have_content("Thank you!  Your account has been activated.")
@@ -22,7 +21,7 @@ describe 'email verification' do
     fill_in 'user[username]', with: ""
     click_on 'Submit'
 
-    expect(page).to have_conent("No username chosen")
+    expect(page).to have_conent("User name can't be blank")
 
     fill_in 'user[username]', with: username
     click_on 'Submit'

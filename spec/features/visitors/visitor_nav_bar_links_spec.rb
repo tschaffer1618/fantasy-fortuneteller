@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe "A visitor" do
   scenario "can click the nav bar link to the root page" do
+    visit root_path
 
+    find("img[alt='Crystal Ball']").click
+
+    expect(current_path).to eq root_path
   end
 
   scenario "can click the link to sign in with google" do

@@ -8,7 +8,10 @@ describe "A logged in user" do
 
   scenario "can click the nav bar link to the root page" do
     visit root_path
-    save_and_open_page
+
+    find("img[alt='Crystal Ball']").click
+
+    expect(current_path).to eq root_path
   end
 
   scenario "can click the log out link" do
@@ -16,7 +19,11 @@ describe "A logged in user" do
   end
 
   scenario "can click the link to see their teams index page" do
+    visit root_path
 
+    click_link("My Teams")
+
+    expect(current_path).to eq user_teams_path
   end
 
   scenario "can click the link to see a specific team show page" do

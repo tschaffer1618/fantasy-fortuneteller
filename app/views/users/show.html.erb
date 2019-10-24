@@ -1,1 +1,12 @@
 Put User Profile Info Here
+
+
+<section class="user-info">
+  <% if @user.verified? %>
+    <p>Name: <%= "#{@user.first_name} #{@user.last_name}" %></p>
+    <p>Username: <%= @user.user_name %></p>
+    <p>Email: <%= @user.email %></p>
+  <% else %>
+    <h5>This account has not been verified.  Please check your email.</h5>
+  <% end %>
+</section>

@@ -44,7 +44,11 @@ describe "A logged in user" do
   end
 
   scenario "can click the link to the player search page" do
+    visit root_path
 
+    click_link("Player Search")
+
+    expect(current_path).to eq players_path
   end
 
   scenario "can click the link to their profile" do

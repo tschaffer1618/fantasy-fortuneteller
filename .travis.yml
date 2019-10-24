@@ -1,7 +1,6 @@
 services:
     - postgresql
 
-
 before_script:
     - psql -c 'create database fantasy_fortuneteller_test;' -U postgres
     - cp config/database.yml.travis config/database.yml
@@ -14,6 +13,7 @@ rvm:
 script:
     - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
     - bundle exec rspec
+    
 # addons:
 #   postgresql: 11.5
 # language: ruby

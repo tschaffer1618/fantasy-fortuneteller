@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   end
 
   def verify
-    user = User.find(params[:user_id])
-    user.update_attribute(:verified, true)
-    redirect_to profile_path
+    @user = User.find(params[:user_id])
+    @user.update_attribute(:verified, true)
+    flash[:success] = "Thank you!  Your account has been activated."
   end
 
 private

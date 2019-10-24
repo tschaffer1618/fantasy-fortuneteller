@@ -1,6 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+describe User, type: :model do
+  describe "relationships" do
+    it {should have_many :teams}
+  end
+
   it "creates itself from an oauth hash" do
     auth = {
       provider: "google",
@@ -28,6 +32,7 @@ RSpec.describe User, type: :model do
     expect(new_user.google_refresh_token).to eq("12345abcdefg")
     expect(new_user.google_oauth_expires_at).to eq(auth[:credentials][:expires_at])
   end
+
   it "updates itself from an oauth hash" do
     auth = {
       provider: "google",

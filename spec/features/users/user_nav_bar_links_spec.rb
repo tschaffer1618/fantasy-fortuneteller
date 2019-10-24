@@ -52,6 +52,10 @@ describe "A logged in user" do
   end
 
   scenario "can click the link to their profile" do
+    visit root_path
 
+    click_link("My Profile")
+
+    expect(current_path).to eq profile_path
   end
 end

@@ -9,7 +9,7 @@ describe 'Visitor can register' do
     user = User.first
     expect(user.email).to eq('alec@gmail.com')
     expect(user.first_name).to eq('Alec')
-    # expect(page).to have_content("Alec Wells")
-    # expect(page).to have_link("Logout")
+    expect(page).to have_content("Alec Wells")
+    expect(page).to have_link("Logout")
   end
 end

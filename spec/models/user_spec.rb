@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  it "relationships" do
+  describe "relationships" do
     it {should have_many :teams}
   end
-  
+
   it "creates itself from an oauth hash" do
     auth = {
       provider: "google",

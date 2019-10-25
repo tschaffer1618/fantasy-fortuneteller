@@ -17,8 +17,4 @@ private
   def set_user
     @user = current_user
   end
-
-  def user_params
-    params.permit(:user_name)
-  end
 end

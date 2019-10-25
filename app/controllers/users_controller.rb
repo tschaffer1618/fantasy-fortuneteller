@@ -11,8 +11,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    # if user doesnt fill out form/leaves field blank the information remains the same
-    # should user be allowed to update email, and if so do we resend email verification
     user = current_user
     user.update(user_params)
     flash[:success] = "Your information has been updated!" if user.save

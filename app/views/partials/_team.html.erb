@@ -5,6 +5,7 @@
       <th scope="col">My Teams</th>
       <th scope="col"></th>
       <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
         <td><%= link_to team.name, user_team_path(team) %></td>
         <td><%= link_to "Change Name", edit_user_team_path(team) %></td>
         <td><%= link_to "Delete Team", user_team_path(team), method: :delete %></td>
+        <td><%= link_to "Add Player", players_search_path %></td>
       <% end %>
     </tr>
     <tr>

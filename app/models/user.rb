@@ -19,6 +19,6 @@ class User < ApplicationRecord
 	end
 
   def verified?
-    verified == true
+    verified
   end
 end

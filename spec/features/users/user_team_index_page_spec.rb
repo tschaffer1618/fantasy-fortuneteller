@@ -57,4 +57,17 @@ describe "A logged in user" do
       expect(page).to_not have_link("What The Flacco")
     end
   end
+
+  xscenario "can delete a team" do
+    visit user_teams_path
+
+    within(".team-#{@team_1.id}") do
+      click_link("Delete Team")
+    end
+
+    expect(current_path).to eq user_teams_path
+    expect(page).to have_content("Team deleted!")
+
+    expect(page).to_not have_link("What The Flacco")
+  end
 end

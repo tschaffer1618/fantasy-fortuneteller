@@ -27,6 +27,14 @@ class User::TeamsController < ApplicationController
     redirect_to user_teams_path
   end
 
+  def destroy
+    team = current_user.teams.find(params[:id])
+    # team.team_players.destroy_all
+    team.destroy
+    flash[:success] = "Team deleted!"
+    redirect_to user_teams_path
+  end
+
   private
 
   def team_params

@@ -11,11 +11,12 @@ describe 'user profile' do
 
     visit user_teams_path(user_1)
 
-    click_link 'Add Player'
-
-    expect(current_path).to eq('/players/search')
-
-    fill_in 'Player Name', with: "Tom Brady"
+    # click_link 'Add Player'
+    #
+    # expect(current_path).to eq('/players/search')
+    within ".search-player" do
+      fill_in 'Search', with: "Tom Brady"
+    end
 
     click_on 'Search'
 

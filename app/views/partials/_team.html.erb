@@ -1,6 +1,3 @@
-
-
-
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -11,12 +8,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <% @teams.each_with_index do |team, index| %>
+    <% @teams.each_with_index do |team, index| %>
+      <tr class="team-<%= team.id %>">
         <th scope="row"><%= index + 1 %></th>
         <td><%= link_to team.name, user_team_path(team) %></td>
-        <td><a href="/user/teams/<% team.id %>/edit" class="btn btn-outline-primary" role="button">Change Name</a></td>
-        <td><a href="/user/teams/<% team.id %>/delete" class="btn btn-outline-primary" role="button">Delete Team</a></td>
+        <td><%= link_to "Change Name", edit_user_team_path(team) %></td>
+        <td><%= link_to "Delete Team", user_team_path(team), method: :delete %></td>
       <% end %>
     </tr>
     <tr>

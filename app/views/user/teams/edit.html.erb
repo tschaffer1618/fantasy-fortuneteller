@@ -1,0 +1,8 @@
+<center>
+  <%= form_for(@team, url: user_team_path) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+
+    <%= f.submit %>
+  <% end %>
+</center>

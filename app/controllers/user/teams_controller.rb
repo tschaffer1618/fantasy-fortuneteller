@@ -16,6 +16,17 @@ class User::TeamsController < ApplicationController
     redirect_to user_teams_path
   end
 
+  def edit
+    @team = current_user.teams.find(params[:id])
+  end
+
+  def update
+    team = current_user.teams.find(params[:id])
+    team.update(team_params)
+    flash[:success] = "Team name updated!" if team.save
+    redirect_to user_teams_path
+  end
+
   private
 
   def team_params

@@ -69,6 +69,7 @@ describe User, type: :model do
     new_user = create(:user, user_name: 'fft')
     verified_user = create(:user, user_name: 'fft', verified: true)
 
-    expect(user.verified?).to eq(false)
+    expect(new_user.verified?).to eq(false)
+    expect(verified_user.verified?).to eq(true)
   end
 end

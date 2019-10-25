@@ -14,7 +14,15 @@ describe 'email verification' do
     user = User.last
 
     expect(page).to have_content("Verified ✔")
+    expect(page).to have_content("Name: Alec Wells")
+    expect(page).to have_content("Username: alec")
+    expect(page).to have_content("Email: alec@gmail.com")
     expect(user.verified).to eq(true)
+
+    expect(current_path).to eq profile_path
+
+    click_link 'Logout'
+    click_link 'Sign in with Google'
 
     expect(current_path).to eq profile_path
   end

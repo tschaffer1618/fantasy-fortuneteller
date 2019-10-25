@@ -13,19 +13,9 @@ describe 'email verification' do
     visit "verification/#{user.id}"
     user = User.last
 
-    expect(page).to have_content("Thank you!  Your account has been activated.")
+    expect(page).to have_content("Verified ✔")
     expect(user.verified).to eq(true)
 
-    username = 'fft'
-    expect(page).to have_conent("Please choose a username")
-    fill_in 'user[username]', with: ""
-    click_on 'Submit'
-
-    expect(page).to have_conent("User name can't be blank")
-
-    fill_in 'user[username]', with: username
-    click_on 'Submit'
-
-    expect(current_path).to eq root_path
+    expect(current_path).to eq profile_path
   end
 end

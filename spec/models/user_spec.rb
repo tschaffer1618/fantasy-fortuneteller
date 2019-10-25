@@ -5,6 +5,10 @@ describe User, type: :model do
     it {should have_many :teams}
   end
 
+  describe "validations" do
+    it {should validate_presence_of :user_name}
+  end
+
   it "creates itself from an oauth hash" do
     auth = {
       provider: "google",
@@ -59,5 +63,12 @@ describe User, type: :model do
     expect(updated_user.google_token).to eq("abcdefg12345")
     expect(updated_user.google_refresh_token).to eq("12345abcdefg")
     expect(updated_user.google_oauth_expires_at).to eq(auth[:credentials][:expires_at])
+  end
+
+  it 'instance methods' do
+    new_user = create(:user, user_name: 'fft')
+    verified_user = create(:user, user_name: 'fft', verified: true)
+
+    expect(user.verified?).to eq(false)
   end
 end

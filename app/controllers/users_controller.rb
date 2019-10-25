@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @teams = current_user.teams
   end
 
   def verify

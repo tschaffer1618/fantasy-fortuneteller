@@ -4,6 +4,7 @@
     <p>Username: <%= @user.user_name %></p>
     <p>Email: <%= @user.email %></p>
     <p>Verified &#10004;</p>
+    <%= link_to 'Edit Profile', edit_user_path(@user) %>
   <% else %>
     <h5>This account has not been verified.  Please check your email.</h5>
   <% end %>

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get '/leaguestats', to: 'stats#index'
 
-  resources :players, only: [:index]
+  resources :players, only: [:index, :show]
 
   get '/profile', to: 'users#show'
 

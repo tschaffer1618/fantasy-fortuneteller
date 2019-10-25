@@ -1,4 +1,6 @@
 class User::TeamsController < ApplicationController
+  before_action :require_user
+  
   def index
     @teams = current_user.teams
   end

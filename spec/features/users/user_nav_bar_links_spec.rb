@@ -15,10 +15,6 @@ describe "A logged in user" do
     expect(current_path).to eq root_path
   end
 
-  scenario "can click the log out link" do
-
-  end
-
   scenario "can click the link to see their teams index page" do
     visit root_path
 

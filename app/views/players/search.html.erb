@@ -1,6 +1,7 @@
+Player Search Page
 <div class="search-player">
   <section>
-    <%= form_tag(player_path) do %>
+    <%= form_tag(players_path) do %>
       <%= text_field_tag :player_name, nil, placeholder: "Player Name" %>
       <%= submit_tag "Search" %>
     <% end %>

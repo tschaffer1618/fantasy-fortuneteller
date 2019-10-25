@@ -1,5 +1,13 @@
 Put Player Search Form Here
-
+<!-- Break out into partial after this is working -->
+<div class="search-player">
+  <section>
+    <%= form_tag(players_path, method: :get) do %>
+      <%= text_field_tag(:search, params[:search]) %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  </section>
+</div>
 <table class="table">
   <thead class="thead-dark">
     <tr>

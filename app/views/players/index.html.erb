@@ -1,1 +1,27 @@
 Put Player Search Form Here
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Players</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @players.each_with_index do |player, index| %>
+      <tr class="player-<%= player.id %>">
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
+        <td><%= player.position=%></td>
+        <td><%= player.display_name=%></td>
+        <td>Projection Here</td>
+        <td>Active Here?</td>
+      <% end %>
+    </tr>
+    <tr>
+  </tbody>
+</table>

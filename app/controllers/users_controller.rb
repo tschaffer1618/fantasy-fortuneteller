@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    # if user doesnt fill out form/leaves field blank the information remains the same
     user = current_user
     user.update(user_params)
     flash[:success] = "Your information has been updated!" if user.save

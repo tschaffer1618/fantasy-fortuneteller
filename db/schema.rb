@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(version: 2019_10_24_044443) do
     t.string "email"
     t.string "first_name"
     t.string "last_name"
+    t.string "user_name"
     t.string "google_token"
     t.string "google_refresh_token"
     t.string "picture"
+    t.boolean "verified", default: false
     t.datetime "google_oauth_expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

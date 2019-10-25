@@ -7,6 +7,7 @@ describe User, type: :model do
 
   describe "validations" do
     it {should validate_presence_of :user_name}
+    it {should validate_presence_of :email}
   end
 
   it "creates itself from an oauth hash" do

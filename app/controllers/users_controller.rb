@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_user
 
   def show
     @user = current_user
@@ -10,5 +11,4 @@ class UsersController < ApplicationController
     redirect_to profile_path
     flash[:success] = "Thank you! Your account has been activated."
   end
-
 end

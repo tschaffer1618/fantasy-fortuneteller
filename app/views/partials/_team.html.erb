@@ -1,0 +1,23 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">My Teams</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.each_with_index do |team, index| %>
+      <tr class="team-<%= team.id %>">
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= link_to team.name, user_team_path(team) %></td>
+        <td><%= link_to "Change Name", edit_user_team_path(team) %></td>
+        <td><%= link_to "Delete Team", user_team_path(team), method: :delete %></td>
+      <% end %>
+    </tr>
+    <tr>
+  </tbody>
+</table>
+
+<%= link_to "New Team", new_user_team_path %>

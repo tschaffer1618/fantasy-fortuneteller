@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :teams
   end
 
+  get '/players/search', to: 'players#search'
+
   get '/leaguestats', to: 'stats#index'
 
   resources :players, only: [:index]

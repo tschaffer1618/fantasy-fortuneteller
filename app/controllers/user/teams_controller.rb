@@ -1,6 +1,6 @@
 class User::TeamsController < ApplicationController
   before_action :require_user
-  
+
   def index
     @teams = current_user.teams
   end
@@ -14,8 +14,13 @@ class User::TeamsController < ApplicationController
 
   def create
     team = current_user.teams.create(team_params)
-    flash[:success] = "New team created!" if team.save
-    redirect_to user_teams_path
+    if team.save
+      flash[:success] = "New team created!"
+      redirect_to user_teams_path
+    else
+      flash[:error] = team.errors.full_messages.to_sentence
+      redirect_to new_user_team_path
+    end
   end
 
   def edit

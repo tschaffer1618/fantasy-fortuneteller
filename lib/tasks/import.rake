@@ -1,6 +1,10 @@
 # require 'faraday'
 # require 'jbuilder'
 
+namespace :import do
+  desc
+end
+
 def players
   json_response = Faraday.get 'https://ff-nerd-service.herokuapp.com/players'
   )

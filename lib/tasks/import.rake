@@ -7,7 +7,6 @@ namespace :import do
 
   # this will need to be updated to add api_key
   task players: :environment do
-    player_data
     player_data.each do |pd|
       Player.create!(active: pd[:active], jersey: pd[:jersey], lname: pd[:lname],
             fname: pd[:fname], display_name: pd[:displayName], team: pd[:team],
@@ -20,6 +19,6 @@ namespace :import do
 end
 
 def player_data
-  json_response = Faraday.get 'https://ff-nerd-service.herokuapp.com/players'
+  json_response = Faraday.get "https://ff-nerd-service.herokuapp.com/players?key=#{ENV['MY_FF_API_KEY']}"
   JSON.parse(json_response.body, symbolize_names: true)
 end

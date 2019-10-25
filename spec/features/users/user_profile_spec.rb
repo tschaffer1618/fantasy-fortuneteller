@@ -28,6 +28,17 @@ describe 'user profile' do
 
     expect(current_path).to eq(edit_user_path(user_1))
 
+    fill_in "Email", with: "new_email@email.com"
+    fill_in "User name", with: "Mahomes is wehre the heart is"
+    click_button("Update User")
+
+    expect(current_path).to eq(profile_path)
+
+    within ".user-info" do
+      expect(page).to have_content("Name: #{user_1.first_name} #{user_1.last_name}")
+      expect(page).to have_content("Username: Mahomes is wehre the heart is")
+      expect(page).to have_content("Email: new_email@email.com")
+    end
   end
 end
 # And I can edit my email address,

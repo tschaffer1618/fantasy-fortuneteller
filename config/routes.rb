@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   get '/profile', to: 'users#show'
 
-  resources :users, only: [:edit]
+  resources :users, only: [:edit, :update]
   # patch '/profile', to: 'users#update'
 
   get '/verification/:user_id', to: 'users#verify'

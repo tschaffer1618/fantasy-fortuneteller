@@ -17,7 +17,7 @@ describe 'user profile' do
     end
   end
 
-  it ' user can view profile' do
+  it ' user can edit profile' do
     user_1 = create(:user, user_name: 'fft', verified: true)
     team_1 = create(:team, name: 'Not team 2', user_id: user_1.id)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
@@ -26,8 +26,8 @@ describe 'user profile' do
 
     click_link 'Edit Profile'
 
-    expect(current_path).to eq(edit_user_path)
-    
+    expect(current_path).to eq(edit_user_path(user_1))
+
   end
 end
 # And I can edit my email address,

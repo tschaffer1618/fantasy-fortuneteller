@@ -5,7 +5,6 @@
   </a>
   <ul class="navbar-nav ml-auto">
     <% if current_user %>
-      <h3 class="welcome-message">Welcome, <%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
       <div class="navbar-nav">
         <a href="/logout" class="nav-item nav-link">Logout</a>
       </div>

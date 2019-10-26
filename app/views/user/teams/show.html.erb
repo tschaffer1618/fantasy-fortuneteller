@@ -1,4 +1,30 @@
 <h1 class="page-header"><%= @team.name %></h1>
-<%= render 'partials/players' %>
 
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Players</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @players.each_with_index do |player, index| %>
+      <tr id="player-<%= player.id %>">
+        <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
+        <td class="dropdown">
+          <%= link_to "Remove Player", user_team_team_player_path(player), method: :delete, class: "reg-btn" %>
+        </td>
+        <td><%= player.position=%></td>
+        <td><%= player.display_name=%></td>
+        <td>Projection Here</td>
+        <td>Active Here?</td>
+      <% end %>
+    </tr>
+    <tr>
+  </tbody>
+</table>
 <%= link_to "Add Player", new_user_team_team_player_path(@team), class: "reg-btn", id: "new-player-btn" %>

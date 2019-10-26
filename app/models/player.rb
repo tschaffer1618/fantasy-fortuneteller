@@ -39,6 +39,6 @@ class Player < ApplicationRecord
   end
 
   def current_team_player(team)
-    team_players.where(team_id: team.id).first
+    team_players.find_by(team_id: team.id)
   end
 end

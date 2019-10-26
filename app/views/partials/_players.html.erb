@@ -4,9 +4,7 @@
       <th scope="col"></th>
       <th scope="col">Player</th>
       <th scope="col">
-        <!-- <button data-toggle="dropdown" > -->
           <%= button_tag "Position", {:class => 'position-btn', 'data-toggle' => 'dropdown'}%>
-        <!-- </button> -->
         <div class="dropdown-menu" id="position-dropdown" aria-labelledby="dropdownMenuButton">
           <% player_positions.each do |position| %>
             <%= link_to position[0], "?position=#{position[1]}", class: 'pos-select'  %><br>

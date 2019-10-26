@@ -12,7 +12,6 @@ class User::TeamPlayersController < ApplicationController
   end
 
   def create
-    # remove add to team button on team show
     player = Player.find(team_player_params[:player_id])
     if TeamPlayer.does_not_exist?(team_player_params)
       TeamPlayer.create!(team_player_params)

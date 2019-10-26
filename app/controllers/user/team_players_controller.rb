@@ -13,12 +13,17 @@ class User::TeamPlayersController < ApplicationController
 
   def create
     # remove add to team button on team show
-    TeamPlayer.create!(team_player_params)
     player = Player.find(team_player_params[:player_id])
+    if TeamPlayer.does_not_exist?(team_player_params)
+      TeamPlayer.create!(team_player_params)
+      flash[:success] = "#{player.display_name} has been added to your team"
+    else
+      flash[:error] = "Sorry #{player.display_name} is already on your team"
+    end
     # the lines below are the only way I can figure out how to show the
     # flash message, but it does make it load more slowly
+    # maybe a could place to try to implement cacheing or javascript
     redirect_to(players_path)
-    flash[:success] = "#{player.display_name} has been added to your team"
   end
 
 private

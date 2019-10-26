@@ -10,7 +10,12 @@ require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter 'helper'
+  add_filter 'workers'
+  add_filter 'jobs'
+  add_filter 'channels'
+end
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|

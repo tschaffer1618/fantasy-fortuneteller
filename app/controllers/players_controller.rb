@@ -16,11 +16,6 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
   end
 
-  # def search_position
-  #   @players = Player.search_position(params[:position])
-  #   # redirect_to players_path
-  # end
-
   private
 
   def sort_column

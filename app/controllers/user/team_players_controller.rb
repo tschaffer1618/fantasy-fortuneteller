@@ -4,8 +4,8 @@ class User::TeamPlayersController < ApplicationController
 
 
   def destroy
-    team = current_user.teams.find(params[:team_id])
-    team_player = TeamPlayer.find_by(player_id: params[:id], team_id: params[:team_id])
+    team = current_user.teams.find(team_player_params[:team_id])
+    team_player = TeamPlayer.find_by(team_player_params)
     team_player.destroy
     flash[:success] = "Player deleted!"
     redirect_to user_team_path(team)

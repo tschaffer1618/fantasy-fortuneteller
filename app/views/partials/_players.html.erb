@@ -2,8 +2,18 @@
   <thead class="thead-players">
     <tr>
       <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col">Position</th>
+      <th scope="col">
+        <button class="btn btn-secondary dropdown-toggle orange-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Position
+        </button>
+        <div class="dropdown-menu" id="position-dropdown" aria-labelledby="dropdownMenuButton">
+          <% player_positions.each do |position| %>
+            <form class="dropdown-item" action="players/search/<%=position[1]%>" method="get">
+              <input type="submit" id="dropdown-position" value="<%=position[0]%>" />
+            </form>
+          <% end %>
+        </div>
+      </th>
       <th scope="col"><%= sortable "display_name", "Name" %></th>
       <th scope="col"><%= sortable "current_projection", "Projection" %></th>
       <th scope="col">Active</th>

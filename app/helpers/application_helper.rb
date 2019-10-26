@@ -14,4 +14,16 @@ module ApplicationHelper
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
+
+  def player_positions
+    [
+      ['All', ''],
+      ['Quarter Back', 'QB'],
+      ['Wide Receiver', 'WR'],
+      ['Running Back', 'RB'],
+      ['Kicker', 'K'],
+      ['Tight End', 'TE'],
+      ['Defense', 'DEF'],
+    ]
+  end
 end

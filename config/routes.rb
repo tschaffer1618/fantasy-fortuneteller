@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   get '/leaguestats', to: 'stats#index'
 
   resources :players, only: [:index, :show]
-  get '/players/search/:position', to: 'players#search_position'
+  # '/players?'
+  # get '/players/search/:position', to: 'players#index'
 
   resources :users, only: [:edit, :update]
   get '/profile', to: 'users#show'

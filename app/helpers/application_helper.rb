@@ -17,8 +17,8 @@ module ApplicationHelper
 
   def player_positions
     [
-      ['All', ''],
-      ['Quarter Back', 'QB'],
+      ['All', 'all'],
+      ['Quarterback', 'QB'],
       ['Wide Receiver', 'WR'],
       ['Running Back', 'RB'],
       ['Kicker', 'K'],

@@ -18,11 +18,18 @@ describe 'Players' do
 
     click_on 'Position'
     within '#position-dropdown' do
-      click_on 'Quarter Back'
+      expect(page).to have_content("Quarterback")
+      expect(page).to have_content("Running Back")
+      expect(page).to have_content("Tight End")
+      expect(page).to have_content("Wide Receiver")
+      expect(page).to have_content("Defense")
+      expect(page).to have_content("Tight End")
+      click_on 'Quarterback'
     end
 
     expect(page).to have_content(@tom_brady.display_name)
     expect(page).to have_content(@ryan_fitzpatrick.display_name)
     expect(page).to_not have_content(@christian.display_name)
+    expect(page).to_not have_content(@george.display_name)
   end
 end

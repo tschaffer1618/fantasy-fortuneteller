@@ -4,17 +4,23 @@ class PlayersController < ApplicationController
 
 
   def index
-    players = Player.search(params[:search])
-    @players = players.order(sort_column + " " + sort_direction)
+    # binding.pry
+    if params[:position]
+      @players = Player.search_position(params[:position])
+    else
+      players = Player.search(params[:search])
+      @players = players.order(sort_column + " " + sort_direction)
+    end
   end
 
   def show
     @player = Player.find(params[:id])
   end
 
-  def search_position
-    binding.pry
-  end
+  # def search_position
+  #   @players = Player.search_position(params[:position])
+  #   # redirect_to players_path
+  # end
 
   private
 

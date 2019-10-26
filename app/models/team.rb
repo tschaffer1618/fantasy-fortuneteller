@@ -4,4 +4,5 @@ class Team < ApplicationRecord
   has_many :players, through: :team_players
 
   validates_presence_of :name
+
 end

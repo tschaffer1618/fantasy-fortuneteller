@@ -1,10 +1,4 @@
 <h1 class="page-header"><%= @team.name %></h1>
-
-<% @players.each do |player| %>
-  <div id="player-section-<%= player.id %>">
-    <p> <%= player.display_name %> </p>
-   <%= link_to "Remove Player", user_team_team_player_path(@team, player), method: :delete, class: "reg-btn" %>
-  </div>
-<% end %>
+<%= render 'partials/players' %>
 
 <%= link_to "Add Player", new_user_team_team_player_path(@team), class: "reg-btn", id: "new-player-btn" %>

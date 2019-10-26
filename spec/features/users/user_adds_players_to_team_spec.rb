@@ -18,17 +18,11 @@ describe "User can add player to team" do
     within "#player-#{@ryan_fitzpatrick.id}" do
       expect(page).to have_content("Add to team")
       click_on("Add to team")
-      expect(page).to have_link("#{@team_1.name}")
-      expect(page).to have_link("#{@team_2.name}")
-
-      click_link "#{@team_1.name}"
+      click_on "#{@team_1.name}"
     end
 
     expect(current_path).to eq(players_path)
-
-    # within "#player-#{@ryan_fitzpatrick.id}" do
-    #   expect(page).to_not have_content("Add to team")
-    # end
+    expect(page).to have_content("#{@ryan_fitzpatrick.display_name} has been added to your team")
 
     visit user_team_path(@team_1)
 

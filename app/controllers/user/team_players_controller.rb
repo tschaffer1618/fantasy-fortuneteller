@@ -1,6 +1,6 @@
 class User::TeamPlayersController < ApplicationController
   before_action :require_user
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, only: [:create]
 
 
   def destroy
@@ -12,7 +12,13 @@ class User::TeamPlayersController < ApplicationController
   end
 
   def create
+    # remove add to team button on team show
     TeamPlayer.create!(team_player_params)
+    player = Player.find(team_player_params[:player_id])
+    # the lines below are the only way I can figure out how to show the
+    # flash message, but it does make it load more slowly
+    redirect_to(players_path)
+    flash[:success] = "#{player.display_name} has been added to your team"
   end
 
 private

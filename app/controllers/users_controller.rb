@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user
 
-    # this might be refactored into facade later
   def show
     @user = current_user
     @teams = current_user.teams

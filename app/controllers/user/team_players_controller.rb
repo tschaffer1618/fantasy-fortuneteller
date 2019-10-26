@@ -1,6 +1,6 @@
 class User::TeamPlayersController < ApplicationController
   before_action :require_user
-  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:create, :create_from_player_search]
 
   def destroy
     team = current_user.teams.find(team_player_params[:team_id])
@@ -11,6 +11,23 @@ class User::TeamPlayersController < ApplicationController
   end
 
   def create
+    player = Player.find_by(display_name: params[:myPlayer])
+    team = current_user.teams.find(params[:team_id])
+    if player
+      team_player = TeamPlayer.find_or_initialize_by(player: player, team: team)
+      if team_player.new_record?
+        team_player.save
+        flash[:success] = "Player added!"
+      else
+        flash[:error] = "Player already on team."
+      end
+    else
+      flash[:error] = "No player found matching that name."
+    end
+    redirect_to user_team_path(team)
+  end
+
+  def create_from_player_search
     team = Team.find(team_player_params[:team_id])
     player = Player.find(team_player_params[:player_id])
     if TeamPlayer.does_not_exist?(team_player_params)
@@ -30,4 +47,5 @@ private
   def team_player_params
     params.permit(:team_id, :player_id)
   end
+
 end

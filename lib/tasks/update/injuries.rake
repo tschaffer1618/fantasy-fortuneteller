@@ -1,7 +1,3 @@
-require 'rake'
-require 'rubygems'
-require 'faraday'
-
 namespace :update do
   desc 'Updates players with most recent injury reports'
 
@@ -27,7 +23,7 @@ namespace :update do
     h_count = healthy.count
 
     healthy.each_with_index do |player, i|
-      puts "#{i + 1}/#{h_count} - Resetting Injury Status: #{player.display_name} - Week #{week}"
+      puts "#{i + 1}/#{h_count} - Resetting Injury Status: #{player.display_name} (Week #{week})"
       player.update(injury_status: nil)
     end
   end

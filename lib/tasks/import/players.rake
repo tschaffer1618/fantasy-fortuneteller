@@ -1,7 +1,3 @@
-require 'rake'
-require 'rubygems'
-require 'faraday'
-
 namespace :import do
   desc 'Import from ff-nerd-service'
 
@@ -9,8 +5,9 @@ namespace :import do
     player_count = player_data.count
 
     player_data.each_with_index do |pd, i|
-      Player.create!(active: pd[:active], jersey: pd[:jersey], lname: pd[:lname],
-        fname: pd[:fname], display_name: pd[:displayName], team: pd[:team],
+      team = pd[:team] == 'JAC' ? 'JAX' : pd[:team]
+      Player.find_or_create_by(active: pd[:active], jersey: pd[:jersey], lname: pd[:lname],
+        fname: pd[:fname], display_name: pd[:displayName], team: team,
         position: pd[:position], height: pd[:height], weight: pd[:weight],
         college: pd[:college], experience: pd[:experience], birth_date: pd[:birthDate],
         photo_url: pd[:photoUrl], bye_week: pd[:byeWeek], ffn_id: pd[:ffn_id]

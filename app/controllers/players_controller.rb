@@ -2,6 +2,7 @@ class PlayersController < ApplicationController
   before_action :require_user, :require_verified_user
   helper_method :sort_column, :sort_direction
 
+
   def index
     players = Player.search(params[:search])
     @players = players.order(sort_column + " " + sort_direction)
@@ -9,6 +10,10 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
+  end
+
+  def search_position
+    binding.pry
   end
 
   private

@@ -25,7 +25,6 @@ describe "A logged in user on a team show page" do
     end
 
     expect(current_path).to eq(user_team_path(@team_1))
-    # expect(@team_player_1.benched).to eq(false)
 
     within "#player-section-#{@player_1.id}" do
       within ".benched" do
@@ -35,15 +34,14 @@ describe "A logged in user on a team show page" do
     end
 
     expect(current_path).to eq(user_team_path(@team_1))
-    # expect(@team_player_1.benched).to eq(true)
   end
 
-  it "shows total_projected_score" do
+  scenario "shows total_projected_score" do
     visit user_team_path(@team_1)
 
     expect(page).to have_content("Total Projected Score: 0.0")
 
-    within "#player-section-#{@player_1.id}" dox
+    within "#player-section-#{@player_1.id}" do 
       within ".benched" do
         click_on "Put me in!"
       end

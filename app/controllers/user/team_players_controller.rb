@@ -17,7 +17,7 @@ class User::TeamPlayersController < ApplicationController
       TeamPlayer.create!(team_player_params)
       flash[:success] = "#{player.display_name} has been added to your team: #{team.name}"
     else
-      flash[:error] = "Sorry, #{player.display_name} is already on your team: #{team.name}"
+      flash[:error] = "Oops, #{player.display_name} is already on your team: #{team.name}"
     end
     # the lines below are the only way I can figure out how to show the
     # flash message, but it does make it load more slowly

@@ -31,12 +31,15 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'autoprefixer-rails'
+gem 'bootstrap-sass'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faraday'
 gem 'figaro'
 gem 'faker'
 gem 'factory_bot_rails'
+gem 'jquery-turbolinks' 
 gem 'rubocop', '~> 0.75.0', require: false
 gem 'omniauth-oauth2'
 gem 'omniauth-google-oauth2'

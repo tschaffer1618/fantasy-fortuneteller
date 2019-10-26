@@ -21,9 +21,4 @@ class User < ApplicationRecord
 		end
 	end
 
-  # probbly don't need this
-  def verified?
-    verified
-  end
-
 end

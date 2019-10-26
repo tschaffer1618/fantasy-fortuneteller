@@ -19,8 +19,17 @@
   </thead>
   <tbody>
     <% @players.each_with_index do |player, index| %>
-      <tr class="player-<%= player.id %>">
+      <tr id="player-<%= player.id %>">
         <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
+        <td class="dropdown">
+          <button class="dropbtn">Add to team</button>
+          <div class="dropdown-content">
+            <% current_user.teams.each do |team| %>
+            <!-- < %# change route %> -->
+              <%= link_to "#{team.name}", "players_path", class: 'dropdown-item' %>
+            <% end %>
+          </div>
+        </td>
         <td><%= player.position=%></td>
         <td><%= player.display_name=%></td>
         <td>Projection Here</td>

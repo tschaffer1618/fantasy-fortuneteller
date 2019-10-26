@@ -32,7 +32,7 @@ describe "A logged in user on a team show page" do
     visit user_team_path(@team_1)
 
     within("#player-section-#{@player_1.id}") do
-      click_button("Remove")
+      click_link("⨉")
     end
 
     expect(current_path).to eq user_team_path(@team_1)

@@ -9,7 +9,6 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
   end
 
-
 private
 
 end

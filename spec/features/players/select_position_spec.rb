@@ -31,5 +31,14 @@ describe 'Players' do
     expect(page).to have_content(@ryan_fitzpatrick.display_name)
     expect(page).to_not have_content(@christian.display_name)
     expect(page).to_not have_content(@george.display_name)
+
+    click_on 'Position'
+    within '#position-dropdown' do
+      click_on 'All'
+    end
+    expect(page).to have_content(@tom_brady.display_name)
+    expect(page).to have_content(@ryan_fitzpatrick.display_name)
+    expect(page).to have_content(@christian.display_name)
+    expect(page).to have_content(@george.display_name)
   end
 end

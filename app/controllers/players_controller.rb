@@ -4,7 +4,6 @@ class PlayersController < ApplicationController
 
 
   def index
-    # binding.pry
     if params[:position]
       @players = Player.search_position(params[:position])
     else

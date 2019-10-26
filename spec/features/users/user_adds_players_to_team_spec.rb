@@ -29,4 +29,22 @@ describe "User can add player to team" do
     expect(page).to have_content(@ryan_fitzpatrick.display_name)
     expect(page).to have_content(@ryan_fitzpatrick.position)
   end
+
+  it "can't add the same player twice" do
+    visit players_path
+
+    within "#player-#{@ryan_fitzpatrick.id}" do
+      expect(page).to have_content("Add to team")
+      click_on("Add to team")
+      click_on "#{@team_1.name}"
+    end
+
+    within "#player-#{@ryan_fitzpatrick.id}" do
+      expect(page).to have_content("Add to team")
+      click_on("Add to team")
+      click_on "#{@team_1.name}"
+    end
+
+    expect(page).to have_content("Sorry #{@ryan_fitzpatrick.display_name} is already on your team")
+  end
 end

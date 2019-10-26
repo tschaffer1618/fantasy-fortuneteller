@@ -4,12 +4,12 @@
       <th scope="col"></th>
       <th scope="col">Player</th>
       <th scope="col">
-        <button class="btn btn-secondary dropdown-toggle orange-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Position
-        </button>
+        <!-- <button data-toggle="dropdown" > -->
+          <%= button_tag "Position", {:class => 'position-btn', 'data-toggle' => 'dropdown'}%>
+        <!-- </button> -->
         <div class="dropdown-menu" id="position-dropdown" aria-labelledby="dropdownMenuButton">
           <% player_positions.each do |position| %>
-            <%= link_to position[0], "?position=#{position[1]}"  %><br>
+            <%= link_to position[0], "?position=#{position[1]}", class: 'pos-select'  %><br>
           <% end %>
         </div>
       </th>

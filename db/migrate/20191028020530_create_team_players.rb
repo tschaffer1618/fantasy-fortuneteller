@@ -3,6 +3,7 @@ class CreateTeamPlayers < ActiveRecord::Migration[5.2]
     create_table :team_players do |t|
       t.references :team, foreign_key: true
       t.references :player, foreign_key: true
+      t.boolean :benched, default: true
     end
   end
 end

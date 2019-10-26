@@ -8,8 +8,8 @@ class User::TeamsController < ApplicationController
 
   def show
     @team = current_user.teams.find_by_id(params[:id].to_i)
-    if params[:benched?]
-      @players =  @team.players.update_attribute(:benched?, params[:benched?])
+    if params[:benched]
+      @players =  @team.players.update_attribute(:benched, params[:benched])
     else
       @players =  @team.players
     end

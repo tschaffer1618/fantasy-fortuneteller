@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2019_10_28_203752) do
     t.string "display_name"
     t.string "team"
     t.string "position"
-    t.boolean "benched?", default: true
     t.string "height"
     t.integer "weight"
     t.string "college"
@@ -40,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_203752) do
   create_table "team_players", force: :cascade do |t|
     t.bigint "team_id"
     t.bigint "player_id"
+    t.boolean "benched", default: true
     t.index ["player_id"], name: "index_team_players_on_player_id"
     t.index ["team_id"], name: "index_team_players_on_team_id"
   end

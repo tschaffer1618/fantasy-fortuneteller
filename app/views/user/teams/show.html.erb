@@ -44,9 +44,9 @@
             </section>
             <section class="benched">
               <% if player.benched? %>
-                <%= link_to "Put me in!", "?benched?=false" %>
+                <%= link_to "Put me in!", "?benched=false" %>
               <% else %>
-                <%= link_to "Take me out", "?benched?=true" %>
+                <%= link_to "Take me out", "?benched=true" %>
               <% end %>
             </section>
           </td>

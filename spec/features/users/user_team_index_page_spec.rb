@@ -37,6 +37,20 @@ describe "A logged in user" do
     end
   end
 
+  scenario "cannot add a team without a name" do
+    visit user_teams_path
+
+    click_link("New Team")
+
+    expect(current_path).to eq new_user_team_path
+
+    fill_in "Name", with: ""
+    click_button("Create Team")
+
+    expect(current_path).to eq new_user_team_path
+    expect(page).to have_content("Name can't be blank")
+  end
+
   scenario "can edit a team name" do
     visit user_teams_path
 
@@ -59,6 +73,22 @@ describe "A logged in user" do
     expect(page).to_not have_link("What The Flacco")
   end
 
+  scenario "cannot edit a team name to be blank" do
+    visit user_teams_path
+
+    within(".team-#{@team_1.id}") do
+      click_link("Change Name")
+    end
+
+    expect(current_path).to eq edit_user_team_path(@team_1)
+    fill_in "Name", with: ""
+
+    click_button("Update Team")
+
+    expect(current_path).to eq edit_user_team_path(@team_1)
+    expect(page).to have_content("Name can't be blank")
+  end
+
   scenario "can delete a team" do
     visit user_teams_path
 
@@ -66,7 +96,7 @@ describe "A logged in user" do
       click_link("Delete Team")
     end
     @user.reload
-    
+
     expect(current_path).to eq user_teams_path
     expect(page).to have_content("Team deleted!")
 

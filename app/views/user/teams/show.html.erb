@@ -7,8 +7,8 @@
   <input type="submit" value="Add Player" class="reg-btn" id="new-player-btn">
 </form>
 
-<section>
-  Total Projected Score <%= @team.total_projected_score %>
+<section class="team-projection">
+  <h3>Total Projected Score: <%= @team.total_projected_score %></h3>
 </section>
 
 <table class="players-table">
@@ -26,7 +26,9 @@
     <% @players.each_with_index do |player, index| %>
       <div class="player" id="player-section-<%= player.id %>">
         <tr>
-          <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
+          <td><% if player.current_team_player(@team).benched %><span class="benched-dot"></span>
+              <% else %><span class="active-dot"></span><% end %>
+            <%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
           <td><%= player.position=%></td>
           <td><%= link_to player.display_name, player_path(player)%></td>
           <td class="table-proj"><%= player.current_projection %></td>

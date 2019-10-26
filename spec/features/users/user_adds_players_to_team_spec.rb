@@ -45,6 +45,6 @@ describe "User can add player to team" do
       click_on "#{@team_1.name}"
     end
 
-    expect(page).to have_content("Sorry, #{@ryan_fitzpatrick.display_name} is already on your team: #{@team_1.name}")
+    expect(page).to have_content("Oops, #{@ryan_fitzpatrick.display_name} is already on your team: #{@team_1.name}")
   end
 end

@@ -26,7 +26,14 @@
           <td><%= player.position=%></td>
           <td><%= link_to player.display_name, player_path(player)%></td>
           <td class="table-proj"><%= player.current_projection %></td>
-          <td>Active Here?</td>
+          <% status =  player.current_status %>
+          <% if status == "✔" %>
+            <td class="status" style="color:#57A773;"><%= status %></td>
+          <% elsif status == 'Bye' %>
+            <td class="status"><%= status %></td>
+          <% else %>
+            <td class="status" style="color:#EE6352;font-size:0.7em;"><%= status %></td>
+          <% end %>
           <td>
             <%= button_to "Remove", user_team_team_player_path(@team, player),
                   data: { confirm: "Remove #{player.display_name} from #{@team.name}?"},

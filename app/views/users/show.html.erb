@@ -1,16 +1,19 @@
 <h1 class="profile-header">My Profile</h1>
-  <section class="user-info">
-    <% if @user.verified? %>
-      <p>Name: <b><%= "#{@user.first_name} #{@user.last_name}" %></b></p>
-      <p>Username: <b><%= @user.user_name %></b></p>
-      <p>Email: <b><%= @user.email %></b></p>
-      <p>Verified &#10004;</p>
-    <% else %>
-      <h5>This account has not been verified.  Please check your email.</h5>
-    <% end %>
-  </section>
+<section class="user-info">
+  <% if verified_user? %>
+    <p>Name: <b><%= "#{@user.first_name} #{@user.last_name}" %></b></p>
+    <p>Username: <b><%= @user.user_name %></b></p>
+    <p>Email: <b><%= @user.email %></b></p>
+    <p>Verified &#10004;</p>
+  <% else %>
+    <h5>This account has not been verified.  Please check your email at <b><%= @user.email %></b></h5>
+  <% end %>
+</section>
+
+<% if verified_user? %>
   <div class="btn-container">
     <%= link_to 'Edit Profile', edit_user_path(@user), class: 'reg-btn' %>
   </div>
 
-<%= render 'partials/team' %>
+  <%= render 'partials/team' %>
+<% end %>

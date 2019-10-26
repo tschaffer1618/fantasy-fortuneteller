@@ -250,7 +250,10 @@ input[type='submit']:hover,
 
 .search-player {
   margin: 2% 25%;
-  width: 100%;
+}
+
+.search-player input[type=text] {
+  width: 70%;
 }
 
 .size-2 {

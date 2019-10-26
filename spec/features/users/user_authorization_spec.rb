@@ -9,7 +9,6 @@ describe 'As a logged in user' do
   scenario 'I cannot view the admin dashboard' do
     visit admin_users_path
 
-    expect(current_path).to eq root_path
-    expect(page).to have_content("You are not authorized to see this content.")
+    expect(page).to have_content("The page you were looking for doesn't exist.")
   end
 end

@@ -8,7 +8,7 @@ describe 'email verification' do
 
     user = User.last
     expect(user.verified).to eq(false)
-    expect(page).to have_content('This account has not been verified. Please check your email.')
+    expect(page).to have_content('This account has not been verified. Please check your email at alec@gmail.com')
 
     visit "verification/#{user.id}"
     user = User.last

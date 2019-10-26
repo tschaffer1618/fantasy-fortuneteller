@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user
+  before_action :require_verified_user, only: [:edit, :update]
 
   def show
     @user = current_user
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
     flash[:success] = "Thank you! Your account has been activated."
   end
 
-private
+  private
 
   def user_params
     params.require(:user).permit(:email, :user_name)

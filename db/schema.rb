@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_203752) do
     t.string "display_name"
     t.string "team"
     t.string "position"
+    t.boolean "benched?", default: true
     t.string "height"
     t.integer "weight"
     t.string "college"

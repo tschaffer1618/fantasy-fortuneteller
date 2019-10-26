@@ -8,6 +8,7 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
       t.string :display_name
       t.string :team
       t.string :position
+      t.boolean :benched?, default: true
       t.string :height
       t.integer :weight
       t.string :college

@@ -27,9 +27,13 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <% current_user.teams.each do |team| %>
-            <!-- < %# change route %> -->
-              <a class="dropdown-item" href="#"><%= team.name %></a>
+              <form action="/user/team_players/<%= "#{team.id}/#{player.id}"%>" method="post">
+                <input type="submit" value=<%= team.name %> />
+              </form>
             <% end %>
+            <!-- < % current_user.teams.each do |team| %> -->
+              <!-- <a class="dropdown-item" href="/user/team_players/< %= "#{team.id}/#{player.id}"%>">< %= team.name %></a> -->
+            <!-- < % end %> -->
           </div>
         </td>
         <td><%= player.position=%></td>

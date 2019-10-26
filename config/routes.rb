@@ -9,9 +9,11 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :teams do
-      resources :team_players, only: [:new, :create, :destroy]
+      resources :team_players, only: [:new, :destroy]
     end
   end
+
+  post '/user/team_players/:team_id/:player_id', to: 'user/team_players#create'
 
   get '/players/search', to: 'players#search'
 

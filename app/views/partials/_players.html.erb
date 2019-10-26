@@ -22,11 +22,13 @@
       <tr id="player-<%= player.id %>">
         <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
         <td class="dropdown">
-          <button class="dropbtn">Add to team</button>
-          <div class="dropdown-content">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Add to team
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <% current_user.teams.each do |team| %>
             <!-- < %# change route %> -->
-              <%= link_to "#{team.name}", "players_path", class: 'dropdown-item' %>
+              <a class="dropdown-item" href="#"><%= team.name %></a>
             <% end %>
           </div>
         </td>

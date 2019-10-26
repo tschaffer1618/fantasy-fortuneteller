@@ -3,7 +3,12 @@ class Player < ApplicationRecord
 
   def self.search(search)
     if search
-      where('lower(display_name) like ?', "%#{search.downcase}%")
+      players = where('lower(display_name) like ?', "%#{search.downcase}%")
+      if players.empty?
+        all
+      else
+        players
+      end
     else
       all
     end

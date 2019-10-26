@@ -13,7 +13,6 @@ describe 'Players' do
   end
 
   it ' user can search player by exact name' do
-    # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     visit players_path
 
     within '.search-player' do
@@ -26,17 +25,26 @@ describe 'Players' do
     expect(page).to_not have_content(@drew_brees.display_name)
   end
 
-  it ' user can search player by exact name' do
-    # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+  it ' user can search player by part of name' do
     visit players_path
 
     within '.search-player' do
-      fill_in "search", with: 'Tom Brady'
+      fill_in "search", with: 'br'
       click_on 'Search'
     end
 
-    expect(current_path).to eq(players_path)
     expect(page).to have_content(@tom_brady.display_name)
-    expect(page).to_not have_content(@drew_brees.display_name)
+    expect(page).to have_content(@drew_brees.display_name)
+    expect(page).to_not have_content(@chad_henne.display_name)
+  end
+
+  it ' alerts user if no matches found' do
+    visit players_path
+
+    within '.search-player' do
+      fill_in "search", with: 'br'
+      click_on 'Search'
+    end
+
   end
 end

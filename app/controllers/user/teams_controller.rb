@@ -14,8 +14,9 @@ class User::TeamsController < ApplicationController
   def show
     @team = current_user.teams.find_by_id(params[:id].to_i)
     if params[:benched]
-      binding.pry
-      @players =  @team.players.update_attribute(:benched, params[:benched])
+      team_player = TeamPlayer.find(params[:team_player])
+      team_player.update_attribute(:benched, params[:benched])
+      @players =  @team.players
     else
       @players =  @team.players
     end

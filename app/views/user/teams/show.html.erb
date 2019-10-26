@@ -7,6 +7,10 @@
   <input type="submit" value="Add Player" class="reg-btn" id="new-player-btn">
 </form>
 
+<section>
+  Total Projected Score
+</section>
+
 <table class="players-table">
   <thead class="thead-players">
     <tr>
@@ -43,10 +47,10 @@
               id: 'remove-player-btn' %>
             </section>
             <section class="benched">
-              <% if player.current_team_player(@team) %>
-                <%= link_to "Put me in!", "/user/teams/#{@team.id}/team_players/#{player.current_team_player(@team).id}" %>
+              <% if player.current_team_player(@team).benched %>
+                <%= link_to "Put me in!", "?benched=false&team_player=#{player.current_team_player(@team).id}" %>
               <% else %>
-                <%= link_to "Take me out", "/user/teams/#{@team.id}/team_players/#{player.current_team_player(@team).id}" %>
+                <%= link_to "Take me out", "?benched=true&team_player=#{player.current_team_player(@team).id}" %>
               <% end %>
             </section>
           </td>

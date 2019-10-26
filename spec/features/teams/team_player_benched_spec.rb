@@ -16,7 +16,7 @@ describe "A logged in user on a team show page" do
 
   scenario "can change player status to benched or unbenched" do
     visit user_team_path(@team_1)
-
+    
     within "#player-section-#{@player_1.id}" do
       within ".benched" do
         expect(page).to have_content("Put me in")
@@ -24,8 +24,8 @@ describe "A logged in user on a team show page" do
       end
     end
 
-    # expect(current_path).to eq(user_team_path(@team_1))
-    expect(@team_player_1.benched).to eq(false)
+    expect(current_path).to eq(user_team_path(@team_1))
+    # expect(@team_player_1.benched).to eq(false)
 
     within "#player-section-#{@player_1.id}" do
       within ".benched" do
@@ -35,6 +35,6 @@ describe "A logged in user on a team show page" do
     end
 
     expect(current_path).to eq(user_team_path(@team_1))
-    expect(@team_player_1.benched).to eq(true)
+    # expect(@team_player_1.benched).to eq(true)
   end
 end

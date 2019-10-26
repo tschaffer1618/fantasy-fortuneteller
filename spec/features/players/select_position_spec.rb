@@ -17,14 +17,7 @@ describe 'Players' do
     visit players_path
 
     click_on 'Position'
-    within '.position-dropdown' do
-      expect(page).to have_content("All")
-      expect(page).to have_content("Quarter Back")
-      expect(page).to have_content("Wide Receiver")
-      expect(page).to have_content("Running Back")
-      expect(page).to have_content("Kicker")
-      expect(page).to have_content("Tight End")
-      expect(page).to have_content("Defense")
+    within '#position-dropdown' do
       click_on 'Quarter Back'
     end
 

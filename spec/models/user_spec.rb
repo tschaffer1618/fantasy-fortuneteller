@@ -14,8 +14,8 @@ describe User, type: :model do
     it "destroys teams when a user is destroyed" do
       user = create(:user, user_name: "Test")
       player = create(:player)
-      team = user.teams.create(name: "Test team")
-      team_player = team.team_players.create(player: player)
+      team = user.teams.create!(name: "Test team")
+      team_player = team.team_players.create!(player: player)
 
       expect { user.destroy }.to change { Team.count }.by(-1)
     end
@@ -77,23 +77,27 @@ describe User, type: :model do
     # expect(updated_user.google_oauth_expires_at).to eq(auth[:credentials][:expires_at])
   end
 
-  it 'instance methods' do
-    new_user = User.create(user_name: 'fft')
-    verified_user = User.create(user_name: 'fft', verified: true)
+  describe 'instance methods' do
+    it '#has_no_teams?' do
+      new_user = User.create!(user_name: 'fft', email: 'test@test.com')
 
-    expect(new_user.verified?).to eq(false)
-    expect(verified_user.verified?).to eq(true)
+      expect(new_user.has_no_teams?).to be true
+
+      team = new_user.teams.create
+
+      expect(new_user.has_no_teams?).to be false
+    end
   end
 
   describe "roles" do
     it "can be created as a default user" do
-      regular_user = User.create(role: 0)
+      regular_user = User.create!(role: 0, user_name: "Test", email: "test@test.com")
 
       expect(regular_user.role).to eq("reg_user")
     end
 
     it "can be created as an admin user" do
-      admin_user = User.create(role: 1)
+      admin_user = User.create!(role: 1, user_name: "Test", email: "test@test.com")
 
       expect(admin_user.role).to eq("admin")
     end

@@ -5,7 +5,7 @@ describe "User can add player to team" do
     @user = create(:user, user_name: "Jason Bourne")
     @team_1 = @user.teams.create(name: "What The Flacco")
     @team_2 = @user.teams.create(name: "The Brady Bunch")
-    @ryan_fitzpatrick = Player.create!(display_name: 'Ryan Fitzpatrick')
+    @ryan_fitzpatrick = Player.create!(display_name: 'Ryan Fitzpatrick', position: 'QB')
     @joe_flacco = Player.create!(display_name: 'Joe Flacco')
     @chad_henne = Player.create!(display_name: 'Chad Henne')
     @derek_anderson = Player.create!(display_name: 'Derek Anderson')

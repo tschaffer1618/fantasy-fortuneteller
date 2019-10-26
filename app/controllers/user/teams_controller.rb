@@ -6,9 +6,15 @@ class User::TeamsController < ApplicationController
     @teams = current_user.teams
   end
 
+  # need to change attibute benched to team_players
+  # team_player = player.teams_players.where(team_id: 'team_id')
+  # instance method for player so when iteratiing through call it and it will just and_return
+  # that players team player for the specific team show show (pass the method the @team)
+  # and then you can call the .benched on that
   def show
     @team = current_user.teams.find_by_id(params[:id].to_i)
     if params[:benched]
+      binding.pry
       @players =  @team.players.update_attribute(:benched, params[:benched])
     else
       @players =  @team.players

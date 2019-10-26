@@ -43,10 +43,10 @@
               id: 'remove-player-btn' %>
             </section>
             <section class="benched">
-              <% if player.benched? %>
-                <%= link_to "Put me in!", "?benched=false" %>
+              <% if player.current_team_player(@team) %>
+                <%= link_to "Put me in!", "/user/teams/#{@team.id}/team_players/#{player.current_team_player(@team).id}" %>
               <% else %>
-                <%= link_to "Take me out", "?benched=true" %>
+                <%= link_to "Take me out", "/user/teams/#{@team.id}/team_players/#{player.current_team_player(@team).id}" %>
               <% end %>
             </section>
           </td>

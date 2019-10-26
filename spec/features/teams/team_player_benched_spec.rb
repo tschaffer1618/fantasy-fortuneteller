@@ -4,11 +4,13 @@ describe "A logged in user on a team show page" do
   before(:each) do
     @user = create(:user, user_name: "Jason Bourne")
     @team_1 = @user.teams.create(name: "What The Flacco")
+    @team_2 = @user.teams.create(name: "spooooky")
     @player_1 = create(:player, display_name: "Frank Gore", photo_url: 'http://static.nfl.com/static/content/public/static/img/fantasy/transparent/512x512/BRA371156.png')
     @player_2 = create(:player, display_name: "Aaron Jones", photo_url: 'http://static.nfl.com/static/content/public/static/img/fantasy/transparent/512x512/BRA371156.png')
     @player_3 = create(:player, display_name: "Tom Brady", photo_url: 'http://static.nfl.com/static/content/public/static/img/fantasy/transparent/512x512/BRA371156.png')
     @team_player_1 = @team_1.team_players.create(player: @player_1)
     @team_player_2 = @team_1.team_players.create(player: @player_2)
+    @team_player_3 = @team_2.team_players.create(player: @player_1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
 
@@ -22,8 +24,8 @@ describe "A logged in user on a team show page" do
       end
     end
 
-    expect(current_path).to eq(user_team_path(@team_1))
-    expect(@player_1.benched?).to eq(false)
+    # expect(current_path).to eq(user_team_path(@team_1))
+    expect(@team_player_1.benched).to eq(false)
 
     within "#player-section-#{@player_1.id}" do
       within ".benched" do
@@ -33,6 +35,6 @@ describe "A logged in user on a team show page" do
     end
 
     expect(current_path).to eq(user_team_path(@team_1))
-    expect(@player_1.benched?).to eq(true)
+    expect(@team_player_1.benched).to eq(true)
   end
 end

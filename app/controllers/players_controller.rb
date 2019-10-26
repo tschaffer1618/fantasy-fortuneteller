@@ -14,7 +14,4 @@ class PlayersController < ApplicationController
 
 private
 
-  def player_params
-    params.require(:player).permit(:search)
-  end
 end

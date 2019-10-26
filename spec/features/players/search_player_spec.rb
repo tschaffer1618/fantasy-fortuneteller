@@ -38,15 +38,27 @@ describe 'Players' do
     expect(page).to_not have_content(@chad_henne.display_name)
   end
 
-  it ' alerts user if no matches found' do
+  it ' returns all players if no match found' do
     visit players_path
 
     within '.search-player' do
-      fill_in "search", with: 'br'
+      fill_in "search", with: 'kdkfhksdfhksdkkhjfs'
       click_on 'Search'
     end
 
-    expect(page).to have_content("Player not found")
+    expect(page).to have_content(@tom_brady.display_name)
+    expect(page).to have_content(@drew_brees.display_name)
+  end
 
+  it ' returns all players if entry is nil' do
+    visit players_path
+
+    within '.search-player' do
+      fill_in "search", with: ''
+      click_on 'Search'
+    end
+
+    expect(page).to have_content(@tom_brady.display_name)
+    expect(page).to have_content(@drew_brees.display_name)
   end
 end

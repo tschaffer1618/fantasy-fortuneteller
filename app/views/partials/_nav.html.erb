@@ -23,9 +23,11 @@
       </li>
       <% if current_user && current_user.teams.present? %>
         <% current_user.teams.each do |team| %>
-          <li class="nav-item">
-            <%= link_to team.name, user_team_path(team), class: 'nav-link' %>
-          </li>
+          <% if team.id %>
+            <li class="nav-item">
+              <%= link_to team.name, user_team_path(team), class: 'nav-link' %>
+            </li>
+          <% end %>
         <% end %>
       <% end %>
       <li class="nav-item">

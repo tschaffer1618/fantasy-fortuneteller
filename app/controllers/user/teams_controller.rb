@@ -1,5 +1,6 @@
 class User::TeamsController < ApplicationController
   before_action :require_user
+  before_action :check_user_teams, except: [:index, :new, :create]
 
   def index
     @teams = current_user.teams
@@ -51,5 +52,13 @@ class User::TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name)
+  end
+
+  def check_user_teams
+    team = Team.find(params[:id])
+    unless current_user.teams.include?(team)
+      flash[:error] = "Forbidden"
+      redirect_to user_teams_path
+    end
   end
 end

@@ -19,6 +19,28 @@ describe "A logged in user" do
     expect(current_path).to eq user_team_path(@team_2)
   end
 
+  scenario "cannot see another user's teams" do
+    user_2 = create(:user, user_name: "Gandalf")
+    team_3 = user_2.teams.create(name: "The Hobbits")
+
+    #@user is still current_user
+    visit user_team_path(team_3)
+
+    expect(current_path).to eq user_teams_path
+    expect(page).to have_content("Forbidden")
+  end
+
+  scenario "cannot edit another user's teams" do
+    user_2 = create(:user, user_name: "Gandalf")
+    team_3 = user_2.teams.create(name: "The Hobbits")
+
+    #@user is still current_user
+    visit edit_user_team_path(team_3)
+
+    expect(current_path).to eq user_teams_path
+    expect(page).to have_content("Forbidden")
+  end
+
   scenario "can add a new team" do
     visit user_teams_path
 

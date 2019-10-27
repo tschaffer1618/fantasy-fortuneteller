@@ -1,0 +1,11 @@
+<center>
+  <%= form_for(@user, url: user_path) do |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email%>
+
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name%>
+
+    <%= f.submit %>
+  <% end %>
+</center>

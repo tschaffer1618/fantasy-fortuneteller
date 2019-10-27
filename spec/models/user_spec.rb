@@ -73,4 +73,18 @@ describe User, type: :model do
     expect(new_user.verified?).to eq(false)
     expect(verified_user.verified?).to eq(true)
   end
+
+  describe "roles" do
+    it "can be created as a default user" do
+      regular_user = User.create(role: 0)
+
+      expect(regular_user.role).to eq("reg_user")
+    end
+
+    it "can be created as an admin user" do
+      admin_user = User.create(role: 1)
+
+      expect(admin_user.role).to eq("admin")
+    end
+  end
 end

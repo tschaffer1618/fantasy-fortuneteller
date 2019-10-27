@@ -14,9 +14,23 @@
  *= require_self
  */
 
-/* .user-login {
+
+.nav-logo {
+  width: 100%;
+}
+
+.pad-right {
+  padding-right: 4em;
+}
+
+.size-2 {
+  font-size: 2em;
+}
+
+.size-1 {
   font-size: 1.5em;
 }
- .welcome-message {
-   color: white;
- } */
+
+#nav-logo-link {
+  width: 25%;
+}

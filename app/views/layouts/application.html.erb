@@ -13,7 +13,7 @@
     <%= render 'partials/nav' %>
     <% flash.each do |key, value| %>
       <div class="<%= flash_class(key) %>">
-            <%= value %>
+        <%= value %>
       </div>
     <% end %>
     <%= yield %>

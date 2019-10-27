@@ -13,8 +13,8 @@ rvm:
 script:
     - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
     - bundle exec rspec
-    - heroku run rake db:migrate
     - git push heroku master
+    - heroku run rake db:migrate
 
 # addons:
 #   postgresql: 11.5

@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Team, type: :model do
   describe "relationships" do
     it {should belong_to :user}
+    it {should have_many(:players).through(:team_players)}
   end
 
   describe "validations" do

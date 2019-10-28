@@ -19,12 +19,12 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav text-right">
       <li class="nav-item">
-        <a class="nav-link size-1" href="/user/teams">My Teams</a>
+        <%= link_to 'My Teams', user_teams_path, class: "nav-link size-1" %>
       </li>
       <% if current_user && current_user.teams %>
         <% current_user.teams.each do |team| %>
           <li class="nav-item">
-            <a class="nav-link" href="/user/teams/<%= team.id  %>"> &#8227; <%= team.name %> </a>
+            <%= link_to team.name, user_team_path(team), class: 'nav-link' %>
           </li>
         <% end %>
       <% end %>

@@ -1,11 +1,11 @@
 <h1 class="page-header">My Teams</h1>
 
 <% @teams.each do |team| %>
-  <div id="team-section-<%= team.id %>">
+  <section id="team-section-<%= team.id %>">
     <%= link_to team.name, user_team_path(team), class: "reg-link big-font my-team-link" %>
     <%= link_to "Change Name", edit_user_team_path(team), class: "reg-btn" %>
     <%= link_to "Delete Team", user_team_path(team), method: :delete, class: "reg-btn" %>
-  </div>
+  </section>
 <% end %>
 
 <%= link_to "New Team", new_user_team_path, class: "reg-btn", id: "new-team-btn" %>

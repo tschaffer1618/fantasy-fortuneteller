@@ -26,25 +26,11 @@ namespace :update do
       puts "Updated: #{player.display_name} - Week #{data[:week]}"
     end
 
-
-
-
-
-    # current.each do |proj|
-    #   week = proj[:week]
-    #   player = Player.find_by(ffn_id: proj[:ffn_id])
-    #   Player.update(
-    #     projection_week: week,
-    #     current_projection: proj[:projection]
-    #   )
-    #   puts "Updated: #{player.display_name} - Week #{week}"
-    # end
-
     week = Player.maximum(:projection_week)
 
-    Player.where("week < #{week}").each do |player|
-      player.update(week: week, projection: 0)
-      puts "Updated with default: #{player.display_name} - Week #{week}"
+    Player.where("projection_week < #{week}").each do |player|
+      puts "Updating with default: #{player.display_name} - Week #{week}"
+      player.update(projection_week: week, current_projection: 0)
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_27_212001) do
+ActiveRecord::Schema.define(version: 2019_10_28_020530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 2019_10_27_212001) do
     t.string "photo_url"
     t.integer "bye_week"
     t.integer "ffn_id"
+  end
+
+  create_table "team_players", force: :cascade do |t|
+    t.bigint "team_id"
+    t.bigint "player_id"
+    t.index ["player_id"], name: "index_team_players_on_player_id"
+    t.index ["team_id"], name: "index_team_players_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -58,5 +65,7 @@ ActiveRecord::Schema.define(version: 2019_10_27_212001) do
     t.integer "role", default: 0
   end
 
+  add_foreign_key "team_players", "players"
+  add_foreign_key "team_players", "teams"
   add_foreign_key "teams", "users"
 end

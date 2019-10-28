@@ -13,9 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/players/search', to: 'players#search'
+
   get '/leaguestats', to: 'stats#index'
 
-  resources :players, only: [:index]
+  resources :players, only: [:index, :show]
 
   get '/profile', to: 'users#show'
 

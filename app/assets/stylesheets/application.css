@@ -37,7 +37,7 @@ body {
 div[id^='team-section-'] {
   display: flex;
   justify-content: space-between;
-  padding: 2% 10%;
+  padding: 4% 10%;
 }
 
 div[id^='team-section-']:nth-child(odd) {
@@ -47,12 +47,31 @@ div[id^='team-section-']:nth-child(even) {
   background-color: #f1eef7;
 }
 
+input[type='text'] {
+  width: 40%;
+  height: 2em;
+  font-size: 1.5em;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid var(--btn-border);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 .big-font {
-  font-size: 2em;
+  font-size: 2.2em;
+}
+
+.med-font {
+  font-size: 1.7em;
 }
 
 .my-team-link {
-  width: 40%;
+  width: 50%;
+}
+
+.new-team-form {
+  margin: 2% 7.5%;
 }
 
 .nav-logo {
@@ -66,20 +85,24 @@ div[id^='team-section-']:nth-child(even) {
 .page-header {
   background-color: var(--page-header);
   color: white;
-  padding: 2% 7.5%;
+  text-shadow: 2px 2px var(--link-color);
+  padding: 1.5% 7.5%;
 }
 
-.reg-btn:link, .reg-btn:visited {
+.reg-btn:link, .reg-btn:visited,
+input[type='submit'] {
   background-color: var(--btn-color);
   border-radius: 5px;
   border: 1px solid var(--btn-color);
   box-shadow: 3px 3px 2px #808080;
   color: #001a33;
   display: inline-block;
+  font-size: 1.25em;
   padding: 0.5em 1em;
 }
 
-.reg-btn:hover {
+.reg-btn:hover,
+input[type='submit']:hover {
   border: 1px solid var(--btn-border);
   box-shadow: 0 0 6px var(--btn-border);
   text-decoration: none;
@@ -100,6 +123,10 @@ div[id^='team-section-']:nth-child(even) {
 
 .size-1 {
   font-size: 1.5em;
+}
+
+#back-to-teams {
+  margin: 2% 7.5%;
 }
 
 #nav-logo-link {

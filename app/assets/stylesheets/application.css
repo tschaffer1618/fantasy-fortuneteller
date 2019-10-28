@@ -14,6 +14,46 @@
  *= require_self
  */
 
+ /* .colors {
+
+ } */
+
+:root {
+  --purple-header: #563d7c;
+  --red-flash: #EE6352;
+  --green-flash: #57A773;
+  --dark-blue-link: #1B2A41;
+  --dark-blue-link-2: #091540;
+  --black-blue: #0C1821;
+  --bright-blue: #1B2CC1;
+  --perriwinkle: #7692FF;
+  --light-blue: #ABD2FA;
+}
+
+body {
+  font-family: 'Verdana';
+}
+
+div[id^='team-section-'] {
+  display: flex;
+  justify-content: space-between;
+  padding: 2% 10%;
+}
+
+div[id^='team-section-']:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+div[id^='team-section-']:nth-child(even) {
+  background-color: #f1eef7;
+}
+
+.big-font {
+  font-size: 2em;
+}
+
+.my-team-link {
+  width: 40%;
+}
 
 .nav-logo {
   width: 100%;
@@ -21,6 +61,15 @@
 
 .pad-right {
   padding-right: 4em;
+}
+
+.page-header {
+  padding: 2% 5%;
+  color: var(--dark-blue-link-2);
+}
+
+.reg-link {
+  color: var(--bright-blue);
 }
 
 .size-2 {

@@ -41,10 +41,10 @@ div[id^='team-section-'] {
 }
 
 div[id^='team-section-']:nth-child(odd) {
-  background-color: #f2f2f2;
+  background-color: #ffe8e6;
 }
 div[id^='team-section-']:nth-child(even) {
-  background-color: #f1eef7;
+  background-color: #e6f7ff;
 }
 
 input[type='text'] {

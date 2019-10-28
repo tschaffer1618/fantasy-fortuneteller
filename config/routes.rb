@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
 
   namespace :user do
-    resources :teams
+    resources :teams do
+      resources :team_players, only: [:new, :create, :destroy]
+    end
   end
 
   get '/leaguestats', to: 'stats#index'

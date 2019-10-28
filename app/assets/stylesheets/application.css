@@ -21,16 +21,26 @@
 :root {
   --purple-header: #563d7c;
   --dark-pink: #C179B9;
-  --page-header: #6CD4FF;
+  --page-header-blue: #6CD4FF;
   --red-flash: #EE6352;
   --green-flash: #57A773;
   --link-color: #1C77C3;
   --link-hover: #39A9DB;
-  --btn-color: #feb8b3;
-  --btn-border: #FE938C;
+  /* --btn-color: #feb8b3; */
+  --btn-color: #fb8884;
+  --dark-orange: #FE938C;
+
+  --red-orange: #F9564F;
+  --raspberry: #B33F62;
+  /* --darker-blue: #0C0A3E; */
+  --darker-blue: #110e58;
+
+  --topaz: #F3C677;
 }
 
 body {
+  background-color: #fdf5e8;
+  color: var(--darker-blue);
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
@@ -38,7 +48,6 @@ section[id^='team-section-'] {
   display: flex;
   justify-content: space-between;
   padding: 4% 10%;
-  margin-bottom: 8px;
 }
 
 section[id^='team-section-']:nth-child(even) {
@@ -54,13 +63,17 @@ input[type='text'] {
   font-size: 1.5em;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid var(--btn-border);
+  border: 1px solid var(--dark-orange);
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 .big-font {
   font-size: 2.2em;
+}
+
+.btn-container {
+  margin: 0 0 3% 7.5%;
 }
 
 .flash-error {
@@ -84,6 +97,7 @@ input[type='text'] {
 }
 
 .my-team-link {
+  font-weight: bold;
   width: 50%;
 }
 
@@ -100,10 +114,19 @@ input[type='text'] {
 }
 
 .page-header {
-  background-color: var(--page-header);
+  background-color: var(--page-header-blue);
   color: white;
-  text-shadow: 2px 2px var(--link-color);
+  margin:0;
   padding: 1.5% 7.5%;
+  text-shadow: 2px 2px var(--link-color);
+}
+
+.profile-header {
+  background-color: var(--red-orange);
+  color: white;
+  margin: 0;
+  padding: 1.5% 7.5%;
+  text-shadow: 2px 2px #940a05;
 }
 
 .reg-btn:link, .reg-btn:visited,
@@ -112,7 +135,7 @@ input[type='submit'] {
   border-radius: 5px;
   border: 1px solid var(--btn-color);
   box-shadow: 3px 3px 2px #808080;
-  color: #001a33;
+  color: var(--darker-blue);
   display: inline-block;
   font-size: 1.25em;
   padding: 0.5em 1em;
@@ -120,8 +143,9 @@ input[type='submit'] {
 
 .reg-btn:hover,
 input[type='submit']:hover {
-  border: 1px solid var(--btn-border);
-  box-shadow: 0 0 6px var(--btn-border);
+  background-color: #fa5752;
+  border: 1px solid var(--dark-orange);
+  box-shadow: 0 0 6px var(--dark-orange);
   text-decoration: none;
 }
 
@@ -131,7 +155,7 @@ input[type='submit']:hover {
 
 .reg-link:hover {
   color: var(--link-hover);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .size-2 {
@@ -140,6 +164,11 @@ input[type='submit']:hover {
 
 .size-1 {
   font-size: 1.5em;
+}
+
+.user-info {
+  font-size: 1.5em;
+  padding: 2% 7.5%;
 }
 
 #back-to-teams {

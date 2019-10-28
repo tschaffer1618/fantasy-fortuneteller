@@ -1,1 +1,11 @@
-Put the List of Players from a Specific User Team Here
+<h1 class="page-header">Players</h1>
+
+<% @players.each do |player| %>
+  <div id="player-section-<%= player.id %>">
+    <p> <%= player.display_name %> </p>
+    <!-- link_to player.display_name, user_team_path(team), class: "reg-link big-font my-team-link"
+    link_to "Remove Player", user_team_path(team), method: :delete, class: "reg-btn" -->
+  </div>
+<% end %>
+
+<%= link_to "Add Player", new_user_team_path, class: "reg-btn", id: "new-player-btn" %>

@@ -7,6 +7,8 @@ class User::TeamsController < ApplicationController
   end
 
   def show
+    team = current_user.teams.find(params[:id])
+    @players =  team.players
   end
 
   def new

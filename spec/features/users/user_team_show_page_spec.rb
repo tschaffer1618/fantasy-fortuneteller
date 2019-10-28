@@ -17,4 +17,16 @@ describe "A logged in user" do
     expect(page).to have_content("Frank Gore")
     expect(page).to have_content("Aaron Jones")
   end
+
+  scenario "can remove a player from the team" do
+    visit user_team_path(@team_1)
+
+    within("#player-section-#{@player_1.id}") do
+      click_link("Remove Player")
+    end
+
+    expect(current_path).to eq user_team_path(@team_1)
+    expect(page).to have_content("Player deleted!")
+    expect(page).to_not have_content("Frank Gore")
+  end
 end

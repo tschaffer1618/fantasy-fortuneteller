@@ -1,0 +1,11 @@
+<h1 class="page-header"><%= header %></h1>
+<div class="new-team-form">
+  <%= form_for(@team, url: url) do |f| %>
+    <p class="med-font"><%= label %> <%= f.label :name %></p>
+    <p><%= f.text_field :name%></p>
+
+    <%= f.submit %>
+  <% end %>
+
+</div>
+<%= link_to 'Back to My Teams', user_teams_path(current_user), class: 'reg-link med-font', id: "back-to-teams" %>

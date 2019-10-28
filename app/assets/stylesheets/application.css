@@ -14,9 +14,172 @@
  *= require_self
  */
 
-/* .user-login {
+ /* .colors {
+
+ } */
+
+:root {
+  --purple-header: #563d7c;
+  --dark-pink: #C179B9;
+  --page-header-blue: #6CD4FF;
+  --red-flash: #EE6352;
+  --green-flash: #57A773;
+  --link-color: #1C77C3;
+  --link-hover: #39A9DB;
+  /* --btn-color: #feb8b3; */
+  --btn-color: #fb8884;
+  --dark-orange: #FE938C;
+
+  --red-orange: #F9564F;
+  --raspberry: #B33F62;
+  /* --darker-blue: #0C0A3E; */
+  --darker-blue: #110e58;
+
+  --topaz: #F3C677;
+}
+
+body {
+  background-color: #fdf5e8;
+  color: var(--darker-blue);
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+section[id^='team-section-'] {
+  display: flex;
+  justify-content: space-between;
+  padding: 4% 10%;
+}
+
+section[id^='team-section-']:nth-child(even) {
+  background-color: #e6f7ff;
+}
+section[id^='team-section-']:nth-child(odd) {
+  background-color: #ffe8e6;
+}
+
+input[type='text'] {
+  width: 40%;
+  height: 2em;
+  font-size: 1.5em;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid var(--dark-orange);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.big-font {
+  font-size: 2.2em;
+}
+
+.btn-container {
+  margin: 0 0 3% 7.5%;
+}
+
+.flash-error {
+  background-color: var(--red-flash);
+  color: white;
+  font-size: 1.2em;
+  padding: 0.5em 0;
+  text-align: center;
+}
+
+.flash-success {
+  background-color: var(--green-flash);
+  color: white;
+  font-size: 1.2em;
+  padding: 0.5em 0;
+  text-align: center;
+}
+
+.med-font {
+  font-size: 1.7em;
+}
+
+.my-team-link {
+  font-weight: bold;
+  width: 50%;
+}
+
+.new-team-form {
+  margin: 2% 7.5%;
+}
+
+.nav-logo {
+  width: 100%;
+}
+
+.pad-right {
+  padding-right: 4em;
+}
+
+.page-header {
+  background-color: var(--page-header-blue);
+  color: white;
+  margin:0;
+  padding: 1.5% 7.5%;
+  text-shadow: 2px 2px var(--link-color);
+}
+
+.profile-header {
+  background-color: var(--red-orange);
+  color: white;
+  margin: 0;
+  padding: 1.5% 7.5%;
+  text-shadow: 2px 2px #940a05;
+}
+
+.reg-btn:link, .reg-btn:visited,
+input[type='submit'] {
+  background-color: var(--btn-color);
+  border-radius: 5px;
+  border: 1px solid var(--btn-color);
+  box-shadow: 3px 3px 2px #808080;
+  color: var(--darker-blue);
+  display: inline-block;
+  font-size: 1.25em;
+  padding: 0.5em 1em;
+}
+
+.reg-btn:hover,
+input[type='submit']:hover {
+  background-color: #fa5752;
+  border: 1px solid var(--dark-orange);
+  box-shadow: 0 0 6px var(--dark-orange);
+  text-decoration: none;
+}
+
+.reg-link {
+  color: var(--link-color);
+}
+
+.reg-link:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.size-2 {
+  font-size: 2em;
+}
+
+.size-1 {
   font-size: 1.5em;
 }
- .welcome-message {
-   color: white;
- } */
+
+.user-info {
+  font-size: 1.5em;
+  padding: 2% 7.5%;
+}
+
+#back-to-teams {
+  margin: 2% 7.5%;
+}
+
+#nav-logo-link {
+  width: 25%;
+}
+
+#new-team-btn {
+  font-size: 1.5em;
+  margin: 2% 10%;
+}

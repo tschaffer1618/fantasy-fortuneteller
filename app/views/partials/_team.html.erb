@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -23,3 +24,16 @@
 </table>
 
 <%= link_to "New Team", new_user_team_path %>
+=======
+<h1 class="page-header">My Teams</h1>
+<section class='teams'>
+  <% @teams.each do |team| %>
+    <section id="team-section-<%= team.id %>">
+      <%= link_to team.name, user_team_path(team), class: "reg-link big-font my-team-link" %>
+      <%= link_to "Change Name", edit_user_team_path(team), class: "reg-btn" %>
+      <%= link_to "Delete Team", user_team_path(team), method: :delete, class: "reg-btn" %>
+    </section>
+  <% end %>
+</section>
+<%= link_to "New Team", new_user_team_path, class: "reg-btn", id: "new-team-btn" %>
+>>>>>>> f29d826fcb9e41176d201b5505be2cc3397bd1e8

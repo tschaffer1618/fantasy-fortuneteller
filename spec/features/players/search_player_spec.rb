@@ -46,5 +46,7 @@ describe 'Players' do
       click_on 'Search'
     end
 
+    expect(page).to have_content("Player not found")
+
   end
 end

@@ -41,10 +41,10 @@ section[id^='team-section-'] {
   margin-bottom: 8px;
 }
 
-section[id^='team-section-']:nth-child(odd) {
-  background-color: #e6f7ff ;
-}
 section[id^='team-section-']:nth-child(even) {
+  background-color: #e6f7ff;
+}
+section[id^='team-section-']:nth-child(odd) {
   background-color: #ffe8e6;
 }
 
@@ -61,6 +61,22 @@ input[type='text'] {
 
 .big-font {
   font-size: 2.2em;
+}
+
+.flash-error {
+  background-color: var(--red-flash);
+  color: white;
+  font-size: 1.2em;
+  padding: 0.5em 0;
+  text-align: center;
+}
+
+.flash-success {
+  background-color: var(--green-flash);
+  color: white;
+  font-size: 1.2em;
+  padding: 0.5em 0;
+  text-align: center;
 }
 
 .med-font {

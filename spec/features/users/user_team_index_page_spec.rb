@@ -11,19 +11,21 @@ describe "A logged in user" do
   scenario "can see a list of their teams with names that link to the team show page" do
     visit user_teams_path
 
-    within('.table') do
-      expect(page).to have_link("What The Flacco")
-      click_link("The Brady Bunch")
+    expect(page).to have_link("What The Flacco")
+    expect(page).to have_link("The Brady Bunch")
+
+    within "#team-section-#{@team_1.id}" do
+      click_link("What The Flacco")
     end
 
-    expect(current_path).to eq user_team_path(@team_2)
+    expect(current_path).to eq user_team_path(@team_1)
   end
 
   scenario "cannot see another user's teams" do
     user_2 = create(:user, user_name: "Gandalf")
     team_3 = user_2.teams.create(name: "The Hobbits")
 
-    #@user is still current_user
+    # @user is still current_user
     visit user_team_path(team_3)
 
     expect(current_path).to eq user_teams_path
@@ -34,7 +36,7 @@ describe "A logged in user" do
     user_2 = create(:user, user_name: "Gandalf")
     team_3 = user_2.teams.create(name: "The Hobbits")
 
-    #@user is still current_user
+    # @user is still current_user
     visit edit_user_team_path(team_3)
 
     expect(current_path).to eq user_teams_path
@@ -54,9 +56,8 @@ describe "A logged in user" do
     expect(current_path).to eq user_teams_path
     expect(page).to have_content("New team created!")
 
-    within('.table') do
-      expect(page).to have_link("Test Team")
-    end
+
+    expect(page).to have_link("Test Team")
   end
 
   scenario "cannot add a team without a name" do
@@ -76,7 +77,7 @@ describe "A logged in user" do
   scenario "can edit a team name" do
     visit user_teams_path
 
-    within(".team-#{@team_1.id}") do
+    within("#team-section-#{@team_1.id}") do
       click_link("Change Name")
     end
 
@@ -98,7 +99,7 @@ describe "A logged in user" do
   scenario "cannot edit a team name to be blank" do
     visit user_teams_path
 
-    within(".team-#{@team_1.id}") do
+    within("#team-section-#{@team_1.id}") do
       click_link("Change Name")
     end
 
@@ -114,7 +115,7 @@ describe "A logged in user" do
   scenario "can delete a team" do
     visit user_teams_path
 
-    within(".team-#{@team_1.id}") do
+    within("#team-section-#{@team_1.id}") do
       click_link("Delete Team")
     end
     @user.reload

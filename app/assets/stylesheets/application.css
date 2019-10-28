@@ -20,18 +20,18 @@
 
 :root {
   --purple-header: #563d7c;
+  --dark-pink: #C179B9;
+  --page-header: #6CD4FF;
   --red-flash: #EE6352;
   --green-flash: #57A773;
-  --dark-blue-link: #1B2A41;
-  --dark-blue-link-2: #091540;
-  --black-blue: #0C1821;
-  --bright-blue: #1B2CC1;
-  --perriwinkle: #7692FF;
-  --light-blue: #ABD2FA;
+  --link-color: #1C77C3;
+  --link-hover: #39A9DB;
+  --btn-color: #feb8b3;
+  --btn-border: #FE938C;
 }
 
 body {
-  font-family: 'Verdana';
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 div[id^='team-section-'] {
@@ -64,12 +64,34 @@ div[id^='team-section-']:nth-child(even) {
 }
 
 .page-header {
-  padding: 2% 5%;
-  color: var(--dark-blue-link-2);
+  background-color: var(--page-header);
+  color: white;
+  padding: 2% 7.5%;
+}
+
+.reg-btn:link, .reg-btn:visited {
+  background-color: var(--btn-color);
+  border-radius: 5px;
+  border: 1px solid var(--btn-color);
+  box-shadow: 3px 3px 2px #808080;
+  color: #001a33;
+  display: inline-block;
+  padding: 0.5em 1em;
+}
+
+.reg-btn:hover {
+  border: 1px solid var(--btn-border);
+  box-shadow: 0 0 6px var(--btn-border);
+  text-decoration: none;
 }
 
 .reg-link {
-  color: var(--bright-blue);
+  color: var(--link-color);
+}
+
+.reg-link:hover {
+  color: var(--link-hover);
+  text-decoration: none;
 }
 
 .size-2 {
@@ -82,4 +104,9 @@ div[id^='team-section-']:nth-child(even) {
 
 #nav-logo-link {
   width: 25%;
+}
+
+#new-team-btn {
+  font-size: 1.5em;
+  margin: 2% 10%;
 }

@@ -1,1 +1,12 @@
-<%= render partial: 'partials/new_edit_team', locals: {header: 'Add a New Team', label: 'Enter a'} %>
+<!-- < %= render partial: 'partials/new_edit_team', locals: {header: 'Add a New Team', label: 'Enter a'} %> -->
+<h1 class="page-header">Add a New Team</h1>
+<div class="new-team-form">
+  <%= form_for(@team, url: user_teams_path) do |f| %>
+    <p class="med-font">Enter a <%= f.label :name %></p>
+    <p><%= f.text_field :name%></p>
+
+    <%= f.submit %>
+  <% end %>
+
+</div>
+<%= link_to 'Back to My Teams', user_teams_path(current_user), class: 'reg-link med-font', id: "back-to-teams" %>

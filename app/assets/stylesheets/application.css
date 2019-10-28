@@ -34,17 +34,18 @@ body {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-div[id^='team-section-'] {
+section[id^='team-section-'] {
   display: flex;
   justify-content: space-between;
   padding: 4% 10%;
+  margin-bottom: 8px;
 }
 
-div[id^='team-section-']:nth-child(odd) {
-  background-color: #ffe8e6;
+section[id^='team-section-']:nth-child(odd) {
+  background-color: #e6f7ff ;
 }
-div[id^='team-section-']:nth-child(even) {
-  background-color: #e6f7ff;
+section[id^='team-section-']:nth-child(even) {
+  background-color: #ffe8e6;
 }
 
 input[type='text'] {

@@ -13,7 +13,7 @@ describe User, type: :model do
   it "creates itself from an oauth hash" do
     auth = {
       provider: "google",
-      uid: "12345678910",
+      uid: "104534628262753737066",
       info: {
         email: "alec@gmail.com",
         first_name: "Alec",
@@ -29,7 +29,7 @@ describe User, type: :model do
     new_user = User.first
 
     expect(new_user.provider).to eq("google")
-    expect(new_user.uid).to eq("12345678910")
+    expect(new_user.uid).to eq("104534628262753737066")
     expect(new_user.email).to eq("alec@gmail.com")
     expect(new_user.first_name).to eq("Alec")
     expect(new_user.last_name).to eq("Wells")
@@ -41,7 +41,7 @@ describe User, type: :model do
   it "updates itself from an oauth hash" do
     auth = {
       provider: "google",
-      uid: "12345678910",
+      uid: "104534628262753737066",
       info: {
         email: "luke@gmail.com",
         first_name: "Luke",
@@ -57,7 +57,7 @@ describe User, type: :model do
     updated_user = User.first
 
     expect(updated_user.provider).to eq("google")
-    expect(updated_user.uid).to eq("12345678910")
+    expect(updated_user.uid).to eq("104534628262753737066")
     expect(updated_user.email).to eq("luke@gmail.com")
     expect(updated_user.first_name).to eq("Luke")
     expect(updated_user.last_name).to eq("Latack")

@@ -15,14 +15,14 @@ namespace :update do
     week = current.first[:week]
 
     players.each_with_index do |player, i|
-      match = current.find { |data| data[:ffn_id] == player.ffn_id }
+      match = current.find { |data| data[:ffn_id].to_i == player.ffn_id }
 
       player.update(
         projection_week: match[:week],
         current_projection: match[:projection]
       )
 
-      puts "#{i + 1}/#{player_count} - Updated: #{player.display_name} (Week #{week})"
+      puts "#{i + 1}/#{player_count} - Updated Projection: #{player.display_name} (Week #{week})"
     end
 
     zero_players = Player.where("projection_week < #{week}")

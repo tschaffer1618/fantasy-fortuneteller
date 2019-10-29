@@ -1,6 +1,5 @@
-
-<table class="table">
-  <thead class="thead-dark">
+<table class="players-table">
+  <thead class="thead-players">
     <tr>
       <th scope="col"></th>
       <th scope="col">Players</th>
@@ -13,9 +12,8 @@
   <tbody>
     <% @players.each_with_index do |player, index| %>
       <tr id="player-<%= player.id %>">
-        <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
         <td class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle orange-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Add to team
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -26,9 +24,10 @@
             <% end %>
           </div>
         </td>
+        <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
         <td><%= player.position=%></td>
         <td><%= link_to player.display_name, player_path(player) %></td>
-        <td><%= player.current_projection %></td>
+        <td class="table-proj"><%= player.current_projection %></td>
         <td>Active Here?</td>
       <% end %>
     </tr>

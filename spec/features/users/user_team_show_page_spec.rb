@@ -4,9 +4,10 @@ describe "A logged in user" do
   before(:each) do
     @user = create(:user, user_name: "Jason Bourne")
     @team_1 = @user.teams.create(name: "What The Flacco")
-    @player_1 = create(:player, display_name: "Frank Gore")
-    @player_2 = create(:player, display_name: "Aaron Jones")
+    @player_1 = create(:player, display_name: "Frank Gore", photo_url: 'http://static.nfl.com/static/content/public/static/img/fantasy/transparent/512x512/BRA371156.png')
+    @player_2 = create(:player, display_name: "Aaron Jones", photo_url: 'http://static.nfl.com/static/content/public/static/img/fantasy/transparent/512x512/BRA371156.png')
     @team_player_1 = @team_1.team_players.create(player: @player_1)
+    @team_player_3 = @team_1.team_players.create(player: @player_2)
     @team_player_2 = @team_1.team_players.create(player: @player_2)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
@@ -28,5 +29,6 @@ describe "A logged in user" do
     expect(current_path).to eq user_team_path(@team_1)
     expect(page).to have_content("Player deleted!")
     expect(page).to_not have_content("Frank Gore")
+    expect(page).to have_content(@player_2.display_name)
   end
 end

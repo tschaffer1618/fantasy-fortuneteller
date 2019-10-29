@@ -16,15 +16,15 @@ Rails.application.routes.draw do
   post '/user/team_players/:team_id/:player_id', to: 'user/team_players#create'
   delete '/user/team_players/:team_id/:player_id', to: 'user/team_players#destroy'
 
-  get '/players/search', to: 'players#search'
 
   get '/leaguestats', to: 'stats#index'
 
   resources :players, only: [:index, :show]
+  get '/players/search', to: 'players#search'
 
-  get '/profile', to: 'users#show'
 
   resources :users, only: [:edit, :update]
 
+  get '/profile', to: 'users#show'
   get '/verification/:user_id', to: 'users#verify'
 end

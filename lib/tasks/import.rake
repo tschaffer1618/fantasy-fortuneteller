@@ -5,7 +5,6 @@ require 'faraday'
 namespace :import do
   desc 'Import from ff-nerd-service'
 
-  # this will need to be updated to add api_key
   task players: :environment do
     player_data.each do |pd|
       Player.create!(active: pd[:active], jersey: pd[:jersey], lname: pd[:lname],

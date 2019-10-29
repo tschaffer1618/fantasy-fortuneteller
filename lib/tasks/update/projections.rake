@@ -14,6 +14,9 @@ namespace :update do
 
     zipped = players.zip(current)
 
+    all_match = zipped.all? { |elem| elem[0].ffn_id == elem[1][:ffn_id].to_i }
+    raise 'Not all ids match' unless all_match
+
     zipped.each do |info|
       player = info[0]
       data = info[1]

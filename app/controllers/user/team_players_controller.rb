@@ -4,7 +4,7 @@ class User::TeamPlayersController < ApplicationController
 
   def destroy
     team = current_user.teams.find(team_player_params[:team_id])
-    team_player = TeamPlayer.find_by(team_player_params)
+    team_player = TeamPlayer.find_by(player: team_player_params[:id], team: team)
     team_player.destroy
     flash[:success] = "Player deleted!"
     redirect_to user_team_path(team)
@@ -30,7 +30,7 @@ class User::TeamPlayersController < ApplicationController
 private
 
   def team_player_params
-    params.permit(:team_id, :myPlayer)
+    params.permit(:team_id, :myPlayer, :id)
   end
 
 end

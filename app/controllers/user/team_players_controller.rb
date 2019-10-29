@@ -14,6 +14,7 @@ class User::TeamPlayersController < ApplicationController
     player = Player.find_by(display_name: params[:myPlayer])
     team = current_user.teams.find(params[:team_id])
     TeamPlayer.create(player: player, team: team)
+    flash[:success] = "Player added!"
     redirect_to user_team_path(team)
   end
 

@@ -10,7 +10,7 @@ class User::TeamPlayersController < ApplicationController
     redirect_to user_team_path(team)
   end
 
-  def create_from_team_show
+  def create
     player = Player.find_by(display_name: params[:myPlayer])
     team = current_user.teams.find(params[:team_id])
     if player

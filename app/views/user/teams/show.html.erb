@@ -21,7 +21,7 @@
   <tbody>
     <% @players.each_with_index do |player, index| %>
       <div class="player" id="player-section-<%= player.id %>">
-        <tr id="player-section-<%= player.id %>">
+        <tr>
           <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
           <td>
             <%= link_to "Remove Player", user_team_team_player_path(@team, player), method: :delete, class: "reg-btn" %>

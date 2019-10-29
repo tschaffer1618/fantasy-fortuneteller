@@ -1,31 +1,30 @@
-
-<table class="table">
-  <thead class="thead-dark">
+<table class="players-table">
+  <thead class="thead-players">
     <tr>
-      <th scope="col"></th>
-      <th scope="col">Players</th>
-      <th scope="col">Position</th>
-      <th scope="col">Name</th>
-      <th scope="col">Projection</th>
-      <th scope="col">Active?</th>
+      <th scope="col" class="players-table-header"></th>
+      <th scope="col" class="players-table-header">Players</th>
+      <th scope="col" class="players-table-header">Position</th>
+      <th scope="col" class="players-table-header">Name</th>
+      <th scope="col" class="players-table-header">Projection</th>
+      <th scope="col" class="players-table-header">Active?</th>
     </tr>
   </thead>
   <tbody>
     <% @players.each_with_index do |player, index| %>
       <tr id="player-<%= player.id %>">
-        <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
         <td class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle orange-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Add to team
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <% current_user.teams.each do |team| %>
-              <form class="dropdown-item" action="/user/team_players/<%= "#{team.id}/#{player.id}"%>" method="post">
-                <input type="submit" id="dropdown-team" value="<%= team.name %>" />
-              </form>
+            <form class="dropdown-item" action="/user/team_players/<%= "#{team.id}/#{player.id}"%>" method="post">
+              <input type="submit" id="dropdown-team" value="<%= team.name %>" />
+            </form>
             <% end %>
           </div>
         </td>
+        <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
         <td><%= player.position=%></td>
         <td><%= link_to player.display_name, player_path(player) %></td>
         <td><%= player.current_projection %></td>

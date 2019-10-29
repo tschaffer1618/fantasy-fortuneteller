@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "A logged in user" do
+describe "A logged in user on a team show page" do
   before(:each) do
     @user = create(:user, user_name: "Jason Bourne")
     @team_1 = @user.teams.create(name: "What The Flacco")
@@ -12,12 +12,20 @@ describe "A logged in user" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
 
-  scenario "can see a list of the players on a team in the team show page" do
+  scenario "can see a list of the players on the team" do
     visit user_team_path(@team_1)
 
     expect(page).to have_content("Frank Gore")
     expect(page).to have_content("Aaron Jones")
     expect(page).to_not have_content("Tom Brady")
+  end
+
+  scenario "can click a player name to go to the player show page" do
+    visit user_team_path(@team_1)
+
+    click_link("Frank Gore")
+
+    expect(current_path).to eq player_path(@player_1)
   end
 
   scenario "can remove a player from the team" do

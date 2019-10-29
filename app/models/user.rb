@@ -17,7 +17,7 @@ class User < ApplicationRecord
       user.google_refresh_token = auth[:credentials][:refresh_token]
       user.google_oauth_expires_at = auth[:credentials][:expires_at]
 			user.picture = auth[:info][:image]
-			user.save!
+			user.save
 		end
 	end
 

@@ -18,9 +18,9 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <% current_user.teams.each do |team| %>
-            <form class="dropdown-item" action="/user/team_players/<%= "#{team.id}/#{player.id}"%>" method="post">
-              <input type="submit" id="dropdown-team" value="<%= team.name %>" />
-            </form>
+              <form class="dropdown-item" action="/user/teams/<%= "#{team.id}/team_players?myPlayer=#{player.display_name}" %>" method="post">
+                <input type="submit" id="dropdown-team" value="<%= team.name %>" />
+              </form>
             <% end %>
           </div>
         </td>

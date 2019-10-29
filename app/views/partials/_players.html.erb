@@ -27,7 +27,7 @@
           </div>
         </td>
         <td><%= player.position=%></td>
-        <td><%= player.display_name=%></td>
+        <td><%= link_to player.display_name, player_path(player) %></td>
         <td><%= player.current_projection %></td>
         <td>Active Here?</td>
       <% end %>

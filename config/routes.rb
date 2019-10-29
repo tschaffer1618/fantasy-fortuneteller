@@ -8,12 +8,13 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :teams do
-      resources :team_players, only: [:new]
+      resources :team_players, only: [:new, :destroy, :create]
+      # post 'team_players', to: 'user/team_players#create_from_team_show'
     end
   end
 
-  post '/user/team_players/:team_id/:player_id', to: 'user/team_players#create'
-  delete '/user/team_players/:team_id/:player_id', to: 'user/team_players#destroy'
+  post '/user/team_players/:team_id/:player_id', to: 'user/team_players#create_from_player_search'
+  # delete '/user/team_players/:team_id/:player_id', to: 'user/team_players#destroy'
 
   get '/leaguestats', to: 'stats#index'
 

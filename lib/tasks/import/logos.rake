@@ -8,10 +8,10 @@ namespace :import do
     players = Player.where(photo_url: nil)
     player_count = players.count
 
-    players.each_with_index do |player|
+    players.each_with_index do |player, i|
       match = logos.find { |logo| logo[:team] == player.team }
 
-      player.update(photo_url: match[:team_logo])
+      player.update(photo_url: match[:team_logo]) if match
       puts "#{i + 1}/#{player_count} - Updated Photo: #{player.display_name}"
     end
   end

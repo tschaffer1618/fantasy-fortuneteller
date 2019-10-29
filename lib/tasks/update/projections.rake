@@ -1,7 +1,3 @@
-require 'rake'
-require 'rubygems'
-require 'faraday'
-
 namespace :update do
   desc 'Update player info for current week'
 
@@ -29,7 +25,7 @@ namespace :update do
     z_count = zero_players.count
 
     zero_players.each_with_index do |player, i|
-      puts "#{i + 1}/#{z_count} - Updated with default: #{player.display_name} - Week #{week}"
+      puts "#{i + 1}/#{z_count} - Updated with default: #{player.display_name} (Week #{week})"
       player.update(projection_week: week, current_projection: 0)
     end
   end

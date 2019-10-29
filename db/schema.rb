@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_020530) do
+ActiveRecord::Schema.define(version: 2019_10_28_203752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(version: 2019_10_28_020530) do
     t.string "photo_url"
     t.integer "bye_week"
     t.integer "ffn_id"
+    t.integer "projection_week", default: 0
+    t.float "current_projection", default: 0.0
+    t.string "injury_status"
   end
 
   create_table "team_players", force: :cascade do |t|

@@ -1,11 +1,4 @@
-<div class="search-player">
-  <section>
-    <%= form_tag(players_path, method: :get) do %>
-      <%= text_field_tag(:search, params[:search]) %>
-      <%= submit_tag "Search" %>
-    <% end %>
-  </section>
-</div>
+
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -19,9 +12,21 @@
   </thead>
   <tbody>
     <% @players.each_with_index do |player, index| %>
-      <tr class="player-<%= player.id %>">
+      <tr id="player-<%= player.id %>">
         <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
-        <td><%= player.position %></td>
+        <td class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Add to team
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <% current_user.teams.each do |team| %>
+              <form class="dropdown-item" action="/user/team_players/<%= "#{team.id}/#{player.id}"%>" method="post">
+                <input type="submit" id="dropdown-team" value="<%= team.name %>" />
+              </form>
+            <% end %>
+          </div>
+        </td>
+        <td><%= player.position=%></td>
         <td><%= link_to player.display_name, player_path(player) %></td>
         <td>Projection Here</td>
         <td>Active Here?</td>

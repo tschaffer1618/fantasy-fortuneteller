@@ -4,10 +4,10 @@
     <tr>
       <th scope="col"></th>
       <th scope="col">Players</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+      <th scope="col">Position</th>
+      <th scope="col">Name</th>
+      <th scope="col">Projection</th>
+      <th scope="col">Active?</th>
     </tr>
   </thead>
   <tbody>
@@ -28,7 +28,7 @@
         </td>
         <td><%= player.position=%></td>
         <td><%= player.display_name=%></td>
-        <td>Projection Here</td>
+        <td><%= player.current_projection %></td>
         <td>Active Here?</td>
       <% end %>
     </tr>

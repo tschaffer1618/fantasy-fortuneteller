@@ -22,7 +22,7 @@ describe "User can add player to team" do
     end
 
     expect(current_path).to eq(players_path)
-    expect(page).to have_content("#{@ryan_fitzpatrick.display_name} has been added to your team: #{@team_1.name}")
+    expect(page).to have_content("Ryan Fitzpatrick has been added to your team!")
 
     visit user_team_path(@team_1)
 
@@ -45,6 +45,6 @@ describe "User can add player to team" do
       click_on "#{@team_1.name}"
     end
 
-    expect(page).to have_content("Sorry, #{@ryan_fitzpatrick.display_name} is already on your team: #{@team_1.name}")
+    expect(page).to have_content("Ryan Fitzpatrick is already on that team.")
   end
 end

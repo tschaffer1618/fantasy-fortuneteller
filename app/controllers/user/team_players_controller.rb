@@ -13,12 +13,16 @@ class User::TeamPlayersController < ApplicationController
   def create
     player = Player.find_by(display_name: params[:myPlayer])
     team = current_user.teams.find(params[:team_id])
-    team_player = TeamPlayer.find_or_initialize_by(player: player, team: team)
-    if team_player.new_record?
-      team_player.save
-      flash[:success] = "Player added!"
+    if player
+      team_player = TeamPlayer.find_or_initialize_by(player: player, team: team)
+      if team_player.new_record?
+        team_player.save
+        flash[:success] = "Player added!"
+      else
+        flash[:error] = "Player already on team."
+      end
     else
-      flash[:error] = "Player already on team."
+      flash[:error] = "No player found matching that name."
     end
     redirect_to user_team_path(team)
   end

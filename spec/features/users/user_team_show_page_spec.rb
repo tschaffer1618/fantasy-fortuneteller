@@ -57,4 +57,14 @@ describe "A logged in user" do
 
     expect(all('.player').count).to eq(3)
   end
+
+  scenario "cannot add a non-existent player to the team" do
+    visit user_team_path(@team_1)
+
+    fill_in "myInput", with: "Not a Name of an NFL Player"
+    click_button("Add Player")
+
+    expect(current_path).to eq user_team_path(@team_1)
+    expect(page).to have_content("No player found matching that name.")
+  end
 end

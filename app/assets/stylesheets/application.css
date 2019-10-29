@@ -62,14 +62,14 @@ section[id^='team-section-']:nth-child(odd) {
 }
 
 input[type='text'] {
-  width: 40%;
-  height: 2em;
-  font-size: 1.5em;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid var(--dark-orange);
   border-radius: 4px;
+  border: 1px solid var(--dark-orange);
   box-sizing: border-box;
+  display: inline-block;
+  font-size: 1.5em;
+  height: 2em;
+  margin: 8px 0;
+  width: 40%;
 }
 
 input {
@@ -173,6 +173,7 @@ tr:nth-child(even) {
   border: 1px solid var(--btn-color);
   box-shadow: 3px 3px 2px #808080;
   color: var(--darker-blue);
+  font-size: 0.8em;
 }
 
 .pad-right {
@@ -201,10 +202,10 @@ tr:nth-child(even) {
 }
 
 .players-table td {
-  height: 5em;
+  height: 4em;
 }
 
-.players-table-header {
+.players-table th {
   padding: 0.5em 0;
 }
 
@@ -251,6 +252,10 @@ input[type='submit']:hover,
   text-decoration: underline;
 }
 
+.quick-add-player {
+   margin: 2% 25%;
+}
+
 .search-player {
   margin: 2% 25%;
   width: 100%;
@@ -264,6 +269,10 @@ input[type='submit']:hover,
   font-size: 1.5em;
 }
 
+.table-proj {
+  font-size: 1.2em;
+  font-weight: bold;
+}
 .thead-players {
   background-color: var(--page-header-blue);
   padding: 0.5em 0;
@@ -293,4 +302,9 @@ input[type='submit']:hover,
 
 #new-player-btn {
   width: 8em;
+  height: 2.4em;
+}
+
+#remove-player-btn {
+  font-size: 0.8em;
 }

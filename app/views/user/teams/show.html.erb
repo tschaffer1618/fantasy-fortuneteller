@@ -1,21 +1,21 @@
 <h1 class="page-header"><%= @team.name %></h1>
 
 <form autocomplete="off" action="/user/teams/<%= @team.id %>/team_players" method="post" class="quick-add-player">
-  <div class="autocomplete" style="width:40%;">
+  <div class="autocomplete">
     <input id="myPlayerInput" type="text" name="myPlayer" placeholder="Player">
   </div>
   <input type="submit" value="Add Player" class="reg-btn" id="new-player-btn">
 </form>
 
-<table class="table">
-  <thead class="thead-dark">
+<table class="players-table">
+  <thead class="thead-players">
     <tr>
-      <th scope="col"></th>
       <th scope="col">Players</th>
       <th scope="col">Position</th>
       <th scope="col">Name</th>
       <th scope="col">Projection</th>
       <th scope="col">Active?</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -23,13 +23,17 @@
       <div class="player" id="player-section-<%= player.id %>">
         <tr>
           <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
-          <td>
-            <%= link_to "Remove Player", user_team_team_player_path(@team, player), method: :delete, class: "reg-btn" %>
-          </td>
           <td><%= player.position=%></td>
           <td><%= link_to player.display_name, player_path(player)%></td>
-          <td><%= player.current_projection %></td>
+          <td class="table-proj"><%= player.current_projection %></td>
           <td>Active Here?</td>
+          <td>
+            <%= button_to "Remove", user_team_team_player_path(@team, player),
+                  data: { confirm: "Remove #{player.display_name} from #{@team.name}?"},
+                  method: :delete,
+                  class: "reg-btn",
+                  id: 'remove-player-btn' %>
+          </td>
         </tr>
       </div>
     <% end %>

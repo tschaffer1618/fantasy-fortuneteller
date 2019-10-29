@@ -24,7 +24,7 @@ describe "A logged in user" do
     visit user_team_path(@team_1)
 
     within("#player-section-#{@player_1.id}") do
-      click_link("Remove Player")
+      click_button("Remove")
     end
 
     expect(current_path).to eq user_team_path(@team_1)

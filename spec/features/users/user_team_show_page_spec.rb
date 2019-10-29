@@ -36,7 +36,7 @@ describe "A logged in user" do
   scenario "can add a player to the team" do
     visit user_team_path(@team_1)
 
-    fill_in "myInput", with: "Tom Brady"
+    fill_in "myPlayerInput", with: "Tom Brady"
     click_button("Add Player")
 
     expect(current_path).to eq user_team_path(@team_1)
@@ -47,10 +47,10 @@ describe "A logged in user" do
   scenario "cannot add the same player to the team multiple times" do
     visit user_team_path(@team_1)
 
-    fill_in "myInput", with: "Tom Brady"
+    fill_in "myPlayerInput", with: "Tom Brady"
     click_button("Add Player")
 
-    fill_in "myInput", with: "Tom Brady"
+    fill_in "myPlayerInput", with: "Tom Brady"
     click_button("Add Player")
 
     expect(current_path).to eq user_team_path(@team_1)
@@ -62,7 +62,7 @@ describe "A logged in user" do
   scenario "cannot add a non-existent player to the team" do
     visit user_team_path(@team_1)
 
-    fill_in "myInput", with: "Not a Name of an NFL Player"
+    fill_in "myPlayerInput", with: "Not a Name of an NFL Player"
     click_button("Add Player")
 
     expect(current_path).to eq user_team_path(@team_1)

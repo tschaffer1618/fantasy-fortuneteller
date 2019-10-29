@@ -42,4 +42,19 @@ describe "A logged in user" do
     expect(page).to have_content("Player added!")
     expect(page).to have_content("Tom Brady")
   end
+
+  scenario "cannot add the same player to the team multiple times" do
+    visit user_team_path(@team_1)
+
+    fill_in "myInput", with: "Tom Brady"
+    click_button("Add Player")
+
+    fill_in "myInput", with: "Tom Brady"
+    click_button("Add Player")
+
+    expect(current_path).to eq user_team_path(@team_1)
+    expect(page).to have_content("Player already on team.")
+
+    expect(all('.player').count).to eq(3)
+  end
 end

@@ -8,9 +8,8 @@
 </form>
 
 <% @players.each do |player| %>
-  <div id="player-section-<%= player.id %>">
+  <div class="player" id="player-section-<%= player.id %>">
     <%= link_to player.display_name, player_path(player) %>
-    <!-- link_to player.display_name, user_team_path(team), class: "reg-link big-font my-team-link" -->
     <%= link_to "Remove Player", user_team_team_player_path(@team, player), method: :delete, class: "reg-btn" %>
   </div>
 <% end %>

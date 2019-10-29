@@ -1,6 +1,6 @@
 class User::TeamPlayersController < ApplicationController
   before_action :require_user
-  skip_before_action :verify_authenticity_token, only: [:create, :create_from_player_search]
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def destroy
     team = current_user.teams.find(team_player_params[:team_id])

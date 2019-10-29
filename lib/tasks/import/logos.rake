@@ -6,9 +6,13 @@ namespace :import do
     logos = JSON.parse(response.body, symbolize_names: true)
 
     players = Player.where(photo_url: nil)
+    player_count = players.count
 
     players.each_with_index do |player|
-      match = player
+      match = logos.find { |logo| logo[:team] == player.team }
+
+      player.update(photo_url: match[:team_logo])
+      puts "#{i + 1}/#{player_count} - Updated Photo: #{player.display_name}"
     end
   end
 end

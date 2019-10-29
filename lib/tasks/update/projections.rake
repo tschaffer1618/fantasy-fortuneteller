@@ -11,28 +11,25 @@ namespace :update do
 
     ids = current.map { |proj| proj[:ffn_id]}
     players = Player.where(ffn_id: ids).order(:ffn_id)
+    player_count = players.count
+    week = current.first[:week]
 
-    zipped = players.zip(current)
-
-    all_match = zipped.all? { |elem| elem[0].ffn_id == elem[1][:ffn_id].to_i }
-    raise 'Not all ids match' unless all_match
-
-    zipped.each do |info|
-      player = info[0]
-      data = info[1]
+    players.each_with_index do |player, i|
+      match = current.find { |data| data[:ffn_id] == player.ffn_id }
 
       player.update(
-        projection_week: data[:week],
-        current_projection: data[:projection]
+        projection_week: match[:week],
+        current_projection: match[:projection]
       )
 
-      puts "Updated: #{player.display_name} - Week #{data[:week]}"
+      puts "#{i + 1}/#{player_count} - Updated: #{player.display_name} (Week #{week})"
     end
 
-    week = Player.maximum(:projection_week)
+    zero_players = Player.where("projection_week < #{week}")
+    z_count = zero_players.count
 
-    Player.where("projection_week < #{week}").each do |player|
-      puts "Updating with default: #{player.display_name} - Week #{week}"
+    zero_players.each_with_index do |player, i|
+      puts "#{i + 1}/#{z_count} - Updated with default: #{player.display_name} - Week #{week}"
       player.update(projection_week: week, current_projection: 0)
     end
   end

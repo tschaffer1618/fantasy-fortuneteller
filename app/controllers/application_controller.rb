@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-<<<<<<< HEAD
   def require_verified_user
     unless verified_user?
       flash[:error] = 'Please verify your account to see this content.'
@@ -26,12 +25,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_admin?
+    current_user && current_user.admin?
+  end
+
   rescue_from ActionController::RoutingError do |exception|
     logger.error "Routing error: #{exception.failures.first}"
     render file: 'public/404', status: 404
-=======
-  def current_admin?
-    current_user && current_user.admin?
->>>>>>> c32084c728bca9100650609277a15e37028e65c6
   end
 end

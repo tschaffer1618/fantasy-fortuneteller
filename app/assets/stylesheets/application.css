@@ -14,27 +14,19 @@
  *= require_self
  */
 
- /* .colors {
-
- } */
-
 :root {
-  --purple-header: #563d7c;
+  --btn-color: #fb8884;
+  --dark-orange: #FE938C;
   --dark-pink: #C179B9;
-  --page-header-blue: #6CD4FF;
-  --red-flash: #EE6352;
+  --darker-blue: #110e58;
   --green-flash: #57A773;
   --link-color: #1C77C3;
   --link-hover: #39A9DB;
-  /* --btn-color: #feb8b3; */
-  --btn-color: #fb8884;
-  --dark-orange: #FE938C;
-
-  --red-orange: #F9564F;
+  --page-header-blue: #6CD4FF;
+  --purple-header: #563d7c;
   --raspberry: #B33F62;
-  /* --darker-blue: #0C0A3E; */
-  --darker-blue: #110e58;
-
+  --red-flash: #EE6352;
+  --red-orange: #F9564F;
   --topaz: #F3C677;
 }
 

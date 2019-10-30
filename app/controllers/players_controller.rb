@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   before_action :require_user, :require_verified_user
+  before_action :require_admin
   helper_method :sort_column, :sort_direction
 
   def index

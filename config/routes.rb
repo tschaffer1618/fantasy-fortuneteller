@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :destroy]
+    get '/players/update', to: 'players#update_projections'
   end
 
   namespace :user do

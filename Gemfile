@@ -6,6 +6,7 @@ gem 'rails-assets-jquery', source: 'https://rails-assets.org'
 gem 'rails-assets-datatables', source: 'https://rails-assets.org'
 gem 'kaminari'
 gem 'turbolinks'
+gem 'sidekiq'
 
 ruby '2.4.1'
 

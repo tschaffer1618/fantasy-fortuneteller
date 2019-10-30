@@ -18,7 +18,10 @@ describe 'As a new user' do
     end
 
     scenario 'I cannot visit "My Teams"' do
-      
+      visit user_teams_path
+
+      expect(current_path).to eq(profile_path)
+      expect(page).to have_content('Please verify your account to see this content.')
     end
   end
 end

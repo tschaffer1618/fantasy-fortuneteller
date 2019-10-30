@@ -14,12 +14,15 @@ class ApplicationController < ActionController::Base
 
   def require_user
     if current_user.nil?
-      flash[:error] = "Please sign in to see this content."
+      flash[:error] = 'Please sign in to see this content.'
       redirect_to root_path
     end
   end
 
   def require_verified_user
-    
+    unless verified_user?
+      flash[:error] = 'Please verify your account to see this content.'
+      redirect_to profile_path
+    end
   end
 end

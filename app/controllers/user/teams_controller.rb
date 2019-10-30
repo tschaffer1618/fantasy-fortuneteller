@@ -1,5 +1,5 @@
 class User::TeamsController < ApplicationController
-  before_action :require_user
+  before_action :require_verified_user
   before_action :check_user_teams, except: [:index, :new, :create]
 
   def index

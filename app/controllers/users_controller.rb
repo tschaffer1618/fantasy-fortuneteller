@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   before_action :require_user
+  before_action :require_admin, only: [:index]
 
-    # this might be refactored into facade later
+  def index
+    @users = User.all
+  end
+
   def show
     @user = current_user
     @teams = current_user.teams

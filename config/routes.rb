@@ -21,4 +21,6 @@ Rails.application.routes.draw do
 
   get '/profile', to: 'users#show'
   get '/verification/:user_id', to: 'users#verify'
+
+  get '/admin/dashboard', to: 'users#index'
 end

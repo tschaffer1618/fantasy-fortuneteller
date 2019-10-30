@@ -4,8 +4,10 @@ describe "A visitor" do
   scenario "can click the nav bar link to the root page" do
     visit root_path
 
-    find("img[alt='Crystal Ball']").click
-
+    within '.navbar' do
+      find("img[alt='Crystal Ball']").click
+    end
+    
     expect(current_path).to eq root_path
   end
 

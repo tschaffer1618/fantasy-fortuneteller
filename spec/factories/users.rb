@@ -7,5 +7,6 @@ FactoryBot.define do
     last_name { "Ditka" }
     picture { "MyString" }
     user_name { 'mikey' }
+    verified { true }
   end
 end

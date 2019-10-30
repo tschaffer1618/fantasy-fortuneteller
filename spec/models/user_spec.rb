@@ -67,8 +67,8 @@ describe User, type: :model do
   end
 
   it 'instance methods' do
-    new_user = create(:user, user_name: 'fft')
-    verified_user = create(:user, user_name: 'fft', verified: true)
+    new_user = User.create(user_name: 'fft')
+    verified_user = User.create(user_name: 'fft', verified: true)
 
     expect(new_user.verified?).to eq(false)
     expect(verified_user.verified?).to eq(true)

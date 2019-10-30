@@ -9,7 +9,7 @@ describe 'Visitor can register' do
 
     click_link "Sign in with Google"
 
-    expect(page).to have_content("This account has not been verified. Please check your email.")
+    expect(page).to have_content("This account has not been verified. Please check your email at alec@gmail.com")
     expect(page).to have_link("Logout")
 
     click_link 'Logout'

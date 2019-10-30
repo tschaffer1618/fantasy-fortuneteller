@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
   def index
-    @users = User.all
+    @users = User.where(role: 0)
   end
 end

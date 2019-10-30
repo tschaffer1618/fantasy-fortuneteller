@@ -28,7 +28,7 @@
         <td><%= player.position=%></td>
         <td><%= link_to player.display_name, player_path(player) %></td>
         <td class="table-proj"><%= player.current_projection %></td>
-        <td>Active Here?</td>
+        <td class="status"><%= player.current_status %></td>
       <% end %>
     </tr>
     <tr>

@@ -12,7 +12,7 @@ FactoryBot.define do
     college { "MyString" }
     experience { "MyString" }
     birth_date { "MyString" }
-    photo_url { "MyString" }
+    photo_url { nil }
     bye_week { rand(4..12) }
     ffn_id { rand(1000..9999) }
     projection_week { 8 }

@@ -17,6 +17,13 @@ describe 'As a new user' do
       expect(page).to_not have_css('.teams')
     end
 
+    scenario 'I cannot edit my profile' do
+      visit edit_user_path(@user)
+
+      expect(current_path).to eq(profile_path)
+      expect(page).to have_content('Please verify your account to see this content.')
+    end
+
     scenario 'I cannot visit "My Teams"' do
       visit user_teams_path
 

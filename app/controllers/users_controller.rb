@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user
+  before_action :require_verified_user, only: [:edit, :update]
 
   def show
     @user = current_user

@@ -278,6 +278,32 @@ input[type='submit']:hover,
   padding: 2% 7.5%;
 }
 
+.welcome-logo {
+  margin-left: 10%;
+  width: 80%;
+}
+
+.welcome-logo-container {
+  align-content: center;
+  background-image: linear-gradient(to bottom right, #F9564F, #F9564F, #C179B9, #563d7c, purple);
+  border-radius: 100px 40px;
+}
+
+.welcome-message-container {
+  width: 60%;
+  margin: 10% 20%;
+}
+
+.welcome-message-container h1 h3 {
+  font-family: 'Aclonica';
+}
+
+.welcome-message, .welcome-motto {
+  font-family: 'Aclonica';
+  margin: 5% 0;
+  text-align: center;
+}
+
 #back-to-teams {
   margin: 2% 7.5%;
 }
@@ -296,8 +322,8 @@ input[type='submit']:hover,
 }
 
 #new-player-btn {
-  width: 8em;
   height: 2.4em;
+  width: 8em;
 }
 
 #remove-player-btn {

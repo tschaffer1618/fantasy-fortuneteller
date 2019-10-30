@@ -1,5 +1,5 @@
 class User::TeamPlayersController < ApplicationController
-  before_action :require_user
+  before_action :require_user, :require_verified_user
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def destroy
@@ -27,10 +27,9 @@ class User::TeamPlayersController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-private
+  private
 
   def team_player_params
     params.permit(:team_id, :myPlayer, :id)
   end
-
 end

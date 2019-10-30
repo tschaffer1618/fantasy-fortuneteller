@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user
 
-    # this might be refactored into facade later
   def show
     @user = current_user
     @teams = current_user.teams
@@ -25,7 +24,7 @@ class UsersController < ApplicationController
     flash[:success] = "Thank you! Your account has been activated."
   end
 
-private
+  private
 
   def user_params
     params.require(:user).permit(:email, :user_name)

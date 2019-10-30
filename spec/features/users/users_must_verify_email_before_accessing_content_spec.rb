@@ -37,5 +37,12 @@ describe 'As a new user' do
       expect(current_path).to eq(profile_path)
       expect(page).to have_content('Please verify your account to see this content.')
     end
+
+    scenario 'I cannot visit the league stats page' do
+      visit leaguestats_path
+
+      expect(current_path).to eq(profile_path)
+      expect(page).to have_content('Please verify your account to see this content.')
+    end
   end
 end

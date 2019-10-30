@@ -3,6 +3,8 @@ class PlayersController < ApplicationController
 
   def index
     @players = Player.search(params[:search])
+    # @teams = current_user.teams
+    # @team_player = @teams.each...
   end
 
   def show

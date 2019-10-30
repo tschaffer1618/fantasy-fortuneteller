@@ -33,6 +33,7 @@ class User::TeamsController < ApplicationController
   def update
     team = current_user.teams.find(params[:id])
     team.update(team_params)
+    # update autmatically saves to db, so "if team.save" probably unecessary
     if team.save
       flash[:success] = "Team name updated!"
       redirect_to user_teams_path

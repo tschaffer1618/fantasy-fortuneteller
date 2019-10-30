@@ -3,8 +3,7 @@ class Admin::BaseController < ApplicationController
 
   def require_admin
     unless current_admin?
-      flash[:error] = "You are not authorized to see this content."
-      redirect_to root_path
+      render file: 'public/404', status: 404
     end
   end
 end

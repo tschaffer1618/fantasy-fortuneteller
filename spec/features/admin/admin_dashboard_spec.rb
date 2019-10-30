@@ -19,6 +19,6 @@ describe "An admin user" do
 
     click_link("Dashboard")
 
-    expect(current_path).to eq '/admin/dashboard'
+    expect(current_path).to eq admin_users_path
   end
 end

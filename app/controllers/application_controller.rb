@@ -17,11 +17,4 @@ class ApplicationController < ActionController::Base
   def current_admin?
     current_user && current_user.admin?
   end
-
-  def require_admin
-    unless current_admin?
-      flash[:error] = "You are not authorized to see this content."
-      redirect_to root_path
-    end
-  end
 end

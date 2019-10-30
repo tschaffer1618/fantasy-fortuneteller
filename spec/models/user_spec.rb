@@ -10,6 +10,17 @@ describe User, type: :model do
     it {should validate_presence_of :email}
   end
 
+  describe "dependencies" do
+    it "destroys teams when a user is destroyed" do
+      user = create(:user, user_name: "Test")
+      player = create(:player)
+      team = user.teams.create(name: "Test team")
+      team_player = team.team_players.create(player: player)
+
+      expect { user.destroy }.to change { Team.count }.by(-1)
+    end
+  end
+
   it "creates itself from an oauth hash" do
     auth = {
       provider: "google",

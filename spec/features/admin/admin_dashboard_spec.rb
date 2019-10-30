@@ -32,5 +32,10 @@ describe "An admin user" do
   scenario "can delete a regular user from the application" do
     visit admin_users_path
 
+    within("#user-#{@user_1.id}") do
+      click_button "Delete"
+    end
+
+    
   end
 end

@@ -36,6 +36,8 @@ describe "An admin user" do
       click_button "Delete"
     end
 
-    
+    expect(current_path).to eq admin_users_path
+    expect(page).to have_content("User deleted!")
+    expect(page).to_not have_content("Jason Bourne")
   end
 end

@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   get 'auth/failure', to: redirect('/')
 
+  namespace :admin do
+    resources :users, only: [:index]
+  end
+
   namespace :user do
     resources :teams do
       resources :team_players, only: [:destroy, :create]
@@ -18,7 +22,6 @@ Rails.application.routes.draw do
   get '/players/search', to: 'players#search'
 
   resources :users, only: [:edit, :update]
-
   get '/profile', to: 'users#show'
   get '/verification/:user_id', to: 'users#verify'
 

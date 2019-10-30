@@ -25,4 +25,9 @@ class ApplicationController < ActionController::Base
       redirect_to profile_path
     end
   end
+
+  rescue_from ActionController::RoutingError do |exception|
+    logger.error "Routing error: #{exception.failures.first}"
+    render file: 'public/404', status: 404
+  end
 end

@@ -21,4 +21,6 @@ Rails.application.routes.draw do
 
   get '/profile', to: 'users#show'
   get '/verification/:user_id', to: 'users#verify'
+
+  match "*path", to: "home#catch_404", via: :all
 end

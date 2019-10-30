@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+#these were installed for datatables and if it doesn't work can be removed
+gem 'rails-assets-jquery', source: 'https://rails-assets.org'
+gem 'rails-assets-datatables', source: 'https://rails-assets.org'
+gem 'kaminari'
+gem 'turbolinks'
+
 ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -31,12 +37,15 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'autoprefixer-rails'
+gem 'bootstrap-sass'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faraday'
 gem 'figaro'
 gem 'faker'
 gem 'factory_bot_rails'
+gem 'jquery-turbolinks'
 gem 'rubocop', '~> 0.75.0', require: false
 gem 'omniauth-oauth2'
 gem 'omniauth-google-oauth2'
@@ -55,7 +64,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'webmock'
   gem 'vcr'

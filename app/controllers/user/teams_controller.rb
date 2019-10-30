@@ -32,8 +32,7 @@ class User::TeamsController < ApplicationController
 
   def update
     team = current_user.teams.find(params[:id])
-    team.update(team_params)
-    if team.save
+    if team.update(team_params)
       flash[:success] = "Team name updated!"
       redirect_to user_teams_path
     else

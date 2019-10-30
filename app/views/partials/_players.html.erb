@@ -2,11 +2,11 @@
   <thead class="thead-players">
     <tr>
       <th scope="col"></th>
-      <th scope="col">Players</th>
-      <th scope="col">Position</th>
-      <th scope="col">Name</th>
-      <th scope="col">Projection</th>
-      <th scope="col">Active?</th>
+      <th scope="col">Player</th>
+      <th scope="col"><%= sortable "position" %></th>
+      <th scope="col"><%= sortable "display_name", "Name" %></th>
+      <th scope="col"><%= sortable "current_projection", "Projection" %></th>
+      <th scope="col">Active</th>
     </tr>
   </thead>
   <tbody>

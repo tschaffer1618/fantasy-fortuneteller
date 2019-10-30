@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :teams
+  has_many :teams, dependent: :destroy
   validates_presence_of :user_name
   validates_presence_of :email
 

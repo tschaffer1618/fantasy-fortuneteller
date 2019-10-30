@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
 
   namespace :admin do
-    resources :users, only: [:index]
+    resources :users, only: [:index, :destroy]
   end
 
   namespace :user do

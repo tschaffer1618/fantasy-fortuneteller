@@ -1,1 +1,29 @@
-All Users Here
+<table class="users-table">
+  <thead class="thead-players">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Username</th>
+      <th scope="col">User Since:</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each_with_index do |user, index| %>
+      <tr id="user-<%= user.id %>">
+        <td><%= user.first_name %> <%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.user_name %></td>
+        <td><%= user.created_at %></td>
+        <td>
+          <%= button_to "Delete", '/routehere',
+                data: { confirm: "Delete #{user.user_name}?"},
+                method: :delete,
+                class: "reg-btn",
+                id: 'remove-user-btn' %>
+        </td>
+      <% end %>
+    </tr>
+    <tr>
+  </tbody>
+</table>

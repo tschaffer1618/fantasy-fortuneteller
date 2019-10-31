@@ -138,6 +138,22 @@ tr:nth-child(even) {
   display: inline-block;
 }
 
+.dropdown-item input[type='submit'] {
+  background-color: white;
+  border:none;
+  box-shadow: none;
+  font-size: 1.5em;
+  line-height: 2.5em;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.dropdown-item input[type='submit']:hover {
+  background-color: var(--light-purple);
+  box-shadow: none;
+}
+
 .dropdown-team {
   background-color: white;
   width: 100%;
@@ -224,6 +240,21 @@ tr:nth-child(even) {
   width: 96%;
   margin: 2%;
   text-align: center;
+}
+
+.pos-select {
+  text-align: center;
+  color: var(--darker-blue);
+  margin: 0;
+  padding: 0 0.5em;
+  font-size: 1.3em;
+  line-height: 2em;
+}
+
+.pos-select:hover {
+  background-color: var(--light-purple);
+  text-decoration: none;
+  color: white;
 }
 
 .users-table {
@@ -314,6 +345,23 @@ input[type='submit']:hover,
 .reg-link:hover {
   color: var(--link-hover);
   text-decoration: underline;
+}
+
+.red-x-btn {
+  background-color: var(--red-flash);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--dark-orange);
+  color: white;
+  font-weight: bold;
+  height: 40px;
+  margin-top: 30px;
+  width:  40px;
+}
+
+.red-x-btn:hover {
+  color: white;
+  text-decoration: none;
+  background-color: red;
 }
 
 .quick-add-player {
@@ -414,24 +462,6 @@ input[type='submit']:hover,
 #new-player-btn {
   height: 2.4em;
   width: 8em;
-}
-
-.red-x-btn {
-  background-color: var(--red-flash);
-  border-radius: 50%;
-  box-shadow: 0 0 6px var(--dark-orange);
-  color: white;
-  font-weight: bold;
-  height: 40px;
-  margin-top: 30px;
-  width:  40px;
-
-}
-
-.red-x-btn:hover {
-  color: white;
-  text-decoration: none;
-  background-color: red;
 }
 
 #remove-player-btn {

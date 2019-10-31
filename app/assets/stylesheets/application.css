@@ -185,6 +185,11 @@ tr:nth-child(even) {
   max-width: 90px;
 }
 
+.player-bio-image {
+  height: 120px;
+  max-width: 120px;
+}
+
 .players-table {
   font-size: 1.7em;
   table-layout: fixed;

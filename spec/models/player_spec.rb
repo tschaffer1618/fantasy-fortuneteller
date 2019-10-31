@@ -47,5 +47,19 @@ describe Player, type: :model do
         end
       end
     end
+
+    it '#defense_photo_url' do
+      player = create(:player,
+            team: 'MIA'
+          )
+
+      defense = create(:player,
+            team: 'MIA',
+            position: 'DEF',
+            photo_url: 'test.jpg'
+          )
+
+      expect(player.defense_photo_url).to eq defense.photo_url
+    end
   end
 end

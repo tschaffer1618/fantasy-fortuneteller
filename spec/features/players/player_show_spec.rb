@@ -13,5 +13,11 @@ describe 'Players' do
     expect(page).to have_content(tom_brady.position)
     expect(page).to have_content(tom_brady.jersey)
     expect(page).to have_content(tom_brady.team)
+    expect(page).to have_content(tom_brady.current_projection)
+    expect(page).to have_content(tom_brady.projection_week)
+    expect(page).to have_content(tom_brady.college)
+    expect(page).to have_content(tom_brady.birth_date)
+    expect(page).to have_content(tom_brady.height)
+    expect(page).to have_content(tom_brady.weight)
   end
 end

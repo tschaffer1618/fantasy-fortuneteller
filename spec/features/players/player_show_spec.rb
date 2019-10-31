@@ -35,4 +35,21 @@ describe 'Players' do
     expect(page).to have_content(@tom_brady.weight)
     expect(page).to have_content(@tom_brady.experience)
   end
+
+  it ' user can add a player to a team' do
+    visit player_path(@tom_brady)
+
+    click_on("Add to team")
+
+    within('.dropdown-menu') do
+      click_on("Not team 2")
+    end
+    
+    expect(current_path).to eq player_path(@tom_brady)
+    expect(page).to have_content("Tom Brady has been added to your team!")
+
+    visit user_team_path(@team_1)
+
+    expect(page).to have_content("Tom Brady")
+  end
 end

@@ -25,4 +25,12 @@ class Player < ApplicationRecord
     end
   end
 
+  def self.search_position(position)
+    if position == 'all'
+      all
+    else
+      where(position: position)
+    end
+  end
+
 end

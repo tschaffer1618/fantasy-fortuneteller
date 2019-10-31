@@ -234,6 +234,24 @@ tr:nth-child(even) {
   text-shadow: 2px 2px #940a05;
 }
 
+.position-btn {
+  background: var(--page-header-blue);
+  color: #007bff;
+  font-weight: bold;
+  border: none;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.position-btn:hover {
+  text-decoration: underline;
+}
+
+.pos-select {
+  display: block;
+  width: 100%;
+  color: black;
+}
+
 .reg-btn:link, .reg-btn:visited,
 input[type='submit'] {
   background-color: var(--btn-color);

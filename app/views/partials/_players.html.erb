@@ -3,7 +3,14 @@
     <tr>
       <th scope="col"></th>
       <th scope="col">Player</th>
-      <th scope="col"><%= sortable "position" %></th>
+      <th scope="col">
+          <%= button_tag "Position", {:class => 'position-btn', 'data-toggle' => 'dropdown'}%>
+        <div class="dropdown-menu" id="position-dropdown" aria-labelledby="dropdownMenuButton">
+          <% player_positions.each do |position| %>
+            <%= link_to position[0], "?position=#{position[1]}", class: 'pos-select'  %><br>
+          <% end %>
+        </div>
+      </th>
       <th scope="col"><%= sortable "display_name", "Name" %></th>
       <th scope="col"><%= sortable "current_projection", "Projection" %></th>
       <th scope="col">Active</th>

@@ -1,4 +1,77 @@
-<%= @player.display_name %>
-<%= @player.position %>
-<%= @player.jersey %>
-<%= @player.team %>
+<table class="players-table">
+  <tbody>
+    <tr>
+      <td><%= image_tag "#{@player.photo_url}", alt: "#{@player.display_name}", class: 'player-bio-image'%></td>
+      <td>
+        <h1><%= @player.display_name %></h1>
+        <% if @player.jersey == 0 %>
+          <p><%= @player.team %> - <%= @player.position %></p>
+        <% else %>
+          <p><%= @player.team %> - <%= @player.position %> #<%= @player.jersey %></p>
+        <% end %>
+        <p>Week <%= @player.projection_week %> Projection: <%= @player.current_projection %></p>
+        <% unless current_user.has_no_teams? %>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle orange-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Add to team
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% current_user.teams.each do |team| %>
+                <form class="dropdown-item" action="/user/teams/<%= "#{team.id}/team_players?myPlayer=#{@player.display_name}" %>" method="post">
+                  <input type="submit" id="dropdown-team" value="<%= team.name %>" />
+                </form>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </td>
+      <% if @player.defense_photo_url %>
+        <td><%= image_tag "#{@player.defense_photo_url}", alt: "#{@player.team}", class: 'player-bio-image'%></td>
+      <% else %>
+        <td></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<% unless @player.position == 'DEF' %>
+  <table class="players-table">
+    <thead class="thead-players">
+      <tr>
+        <th scope="col">Birthdate</th>
+        <th scope="col">College</th>
+        <th scope="col">Years Pro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @player.birth_date %></td>
+        <td><%= @player.college %></td>
+        <td><%= @player.experience %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="players-table">
+    <thead class="thead-players">
+      <tr>
+        <th scope="col">Height</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Injury Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @player.height %></td>
+        <td><%= @player.weight %> lbs</td>
+        <td>
+          <% if @player.injury_status %>
+            <%= @player.injury_status %>
+          <% else %>
+            No Injury
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

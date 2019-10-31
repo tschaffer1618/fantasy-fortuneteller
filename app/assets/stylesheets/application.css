@@ -24,6 +24,7 @@
   --link-hover: #39A9DB;
   --page-header-blue: #6CD4FF;
   --purple-header: #563d7c;
+  --light-purple: #9276bc;
   --raspberry: #B33F62;
   --red-flash: #EE6352;
   --red-orange: #F9564F;
@@ -174,6 +175,16 @@ tr:nth-child(even) {
 
 .nav-logo {
   width: 100%;
+}
+
+.navbar-collapse .nav-item {
+  border-top: 3px solid var(--light-purple);
+  min-height: 5em;
+  padding-right: 1em;
+}
+
+.navbar-collapse .nav-item:nth-child(odd) {
+  background-color: #6b4c9a;
 }
 
 .orange-btn {
@@ -347,6 +358,10 @@ input[type='submit']:hover,
   padding: 2% 7.5%;
 }
 
+.users-table td {
+  font-size: 18px;
+}
+
 .welcome-logo {
   margin-left: 10%;
   width: 80%;
@@ -397,4 +412,15 @@ input[type='submit']:hover,
 
 #remove-player-btn {
   font-size: 0.8em;
+}
+
+#update-player-projections-btn {
+  background-color: var(--green-flash);
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  margin: 2% 37.5% 1%;
+  text-align: center;
+  padding: 0.9em 0;
+  width: 25%;
 }

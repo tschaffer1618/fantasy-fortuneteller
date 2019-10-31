@@ -41,20 +41,21 @@
             <td class="status" style="color:#EE6352;font-size:0.7em;"><%= status %></td>
           <% end %>
           <td>
-            <section>
-              <%= button_to "Remove", user_team_team_player_path(@team, player),
+            <div class="red-x">
+              
+            </div>
+            <!-- < %= button_to "Remove", user_team_team_player_path(@team, player),
               data: { confirm: "Remove #{player.display_name} from #{@team.name}?"},
               method: :delete,
               class: "reg-btn",
-              id: 'remove-player-btn' %>
-            </section>
-            <section class="benched">
+              id: 'remove-player-btn' %> -->
+            <div class="benched">
               <% if player.current_team_player(@team).benched %>
                 <%= link_to "Put me in!", "?benched=false&team_player=#{player.current_team_player(@team).id}", class: "reg-btn", id: 'unbench-player' %>
               <% else %>
                 <%= link_to "Take me out", "?benched=true&team_player=#{player.current_team_player(@team).id}", class: "reg-btn", id: 'bench-player' %>
               <% end %>
-            </section>
+            </div>
           </td>
         </tr>
       </div>

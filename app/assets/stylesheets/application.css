@@ -33,6 +33,7 @@
 
 * {
   box-sizing: border-box;
+  /* border: 1px solid red; */
 }
 
 body {
@@ -340,6 +341,11 @@ input[type='submit']:hover,
   font-weight: bold;
 }
 
+.team-actions {
+  display: flex;
+  justify-content: space-around;
+}
+
 .team-projection {
   text-align: center;
   color: white;
@@ -410,6 +416,24 @@ input[type='submit']:hover,
   width: 8em;
 }
 
+.red-x-btn {
+  background-color: var(--red-flash);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--dark-orange);
+  color: white;
+  font-weight: bold;
+  height: 40px;
+  margin-top: 30px;
+  width:  40px;
+
+}
+
+.red-x-btn:hover {
+  color: white;
+  text-decoration: none;
+  background-color: red;
+}
+
 #remove-player-btn {
   background-color: var(--btn-color);
   font-size: 0.7em;
@@ -418,19 +442,31 @@ input[type='submit']:hover,
 }
 
 #bench-player {
-  background-color: var(--red-flash);
+  background-color: #ca6885;
+  border: none;
+  color: white;
   font-size: 0.7em;
-  width: 80%;
+  height: 100px;
   margin: 4px;
+  width: 100px;
+}
 
+#bench-player:hover {
+  background-color: var(--raspberry);
 }
 
 #unbench-player {
   background-color: var(--green-flash);
-  font-size: 0.7em;
-  width: 80%;
   border: none;
+  color: white;
+  font-size: 0.7em;
+  height: 100px;
   margin: 4px;
+  width: 100px;
+}
+
+#unbench-player:hover {
+  background-color: #3e7551;
 }
 
 #update-player-projections-btn {

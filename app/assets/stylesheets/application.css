@@ -120,6 +120,22 @@ tr:nth-child(even) {
   margin: 0 0 3% 7.5%;
 }
 
+.active-dot {
+  height: 25px;
+  width: 25px;
+  background-color: var(--green-flash);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.benched-dot {
+  height: 25px;
+  width: 25px;
+  background-color: var(--red-flash);
+  border-radius: 50%;
+  display: inline-block;
+}
+
 .dropdown-team {
   background-color: white;
   width: 100%;
@@ -311,6 +327,15 @@ input[type='submit']:hover,
 .table-proj {
   font-size: 1.2em;
   font-weight: bold;
+}
+
+.team-projection {
+  text-align: center;
+  color: white;
+  margin: 0em 1.8em;
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
+  background-color: var(--purple-header);
 }
 .thead-players {
   background-color: var(--page-header-blue);

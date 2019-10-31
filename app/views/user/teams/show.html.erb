@@ -7,6 +7,10 @@
   <input type="submit" value="Add Player" class="reg-btn" id="new-player-btn">
 </form>
 
+<section class="team-projection">
+  <h3>Total Projected Score: <%= @team.total_projected_score %></h3>
+</section>
+
 <table class="players-table">
   <thead class="thead-players">
     <tr>
@@ -22,7 +26,9 @@
     <% @players.each_with_index do |player, index| %>
       <div class="player" id="player-section-<%= player.id %>">
         <tr>
-          <td><%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
+          <td><% if player.current_team_player(@team).benched %><span class="benched-dot"></span>
+              <% else %><span class="active-dot"></span><% end %>
+            <%= image_tag "#{player.photo_url}", alt: 'Football', class: 'player-image'%></td>
           <td><%= player.position=%></td>
           <td><%= link_to player.display_name, player_path(player)%></td>
           <td class="table-proj"><%= player.current_projection %></td>
@@ -35,11 +41,20 @@
             <td class="status" style="color:#EE6352;font-size:0.7em;"><%= status %></td>
           <% end %>
           <td>
-            <%= button_to "Remove", user_team_team_player_path(@team, player),
-                  data: { confirm: "Remove #{player.display_name} from #{@team.name}?"},
-                  method: :delete,
-                  class: "reg-btn",
-                  id: 'remove-player-btn' %>
+            <section>
+              <%= button_to "Remove", user_team_team_player_path(@team, player),
+              data: { confirm: "Remove #{player.display_name} from #{@team.name}?"},
+              method: :delete,
+              class: "reg-btn",
+              id: 'remove-player-btn' %>
+            </section>
+            <section class="benched">
+              <% if player.current_team_player(@team).benched %>
+                <%= link_to "Put me in!", "?benched=false&team_player=#{player.current_team_player(@team).id}" %>
+              <% else %>
+                <%= link_to "Take me out", "?benched=true&team_player=#{player.current_team_player(@team).id}" %>
+              <% end %>
+            </section>
           </td>
         </tr>
       </div>

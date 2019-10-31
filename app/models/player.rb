@@ -37,4 +37,8 @@ class Player < ApplicationRecord
     defense = Player.find_by(team: self.team, position: 'DEF')
     defense.photo_url if defense
   end
+
+  def current_team_player(team)
+    team_players.find_by(team_id: team.id)
+  end
 end

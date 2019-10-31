@@ -8,7 +8,13 @@ class User::TeamsController < ApplicationController
 
   def show
     @team = current_user.teams.find_by_id(params[:id].to_i)
-    @players =  @team.players
+    if team_player_params[:benched]
+      team_player = TeamPlayer.find(team_player_params[:team_player])
+      team_player.update_attribute(:benched, team_player_params[:benched])
+      @players =  @team.players
+    else
+      @players =  @team.players
+    end
   end
 
   def new
@@ -52,6 +58,10 @@ class User::TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name)
+  end
+
+  def team_player_params
+    params.permit(:team_player, :benched)
   end
 
   def check_user_teams

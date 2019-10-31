@@ -3,6 +3,7 @@ class PlayersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
 
+  
   def index
     if params[:position]
       @players = Player.search_position(params[:position]).order(current_projection: :desc)

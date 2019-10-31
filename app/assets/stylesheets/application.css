@@ -193,6 +193,15 @@ tr:nth-child(even) {
   text-align: center;
 }
 
+.users-table {
+  font-size: 1.7em;
+  table-layout: fixed;
+  width: 96%;
+  margin: 2%;
+  text-align: center;
+  word-break: break-all;
+}
+
 .players-table td {
   height: 4em;
 }
@@ -202,6 +211,18 @@ tr:nth-child(even) {
 }
 
 .players-table-row {
+  height: 7%;
+}
+
+.users-table td {
+  height: 4em;
+}
+
+.users-table th {
+  padding: 0.5em 0;
+}
+
+.users-table-row {
   height: 7%;
 }
 

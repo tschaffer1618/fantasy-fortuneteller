@@ -3,9 +3,9 @@ require 'rails_helper'
 describe "An admin user" do
   before(:each) do
     @admin = create(:user, user_name: "Admin", role: 1)
-    @user = create(:user, user_name: "Jason Bourne")
+    @user_1 = create(:user, user_name: "Jason Bourne")
     @user_2 = create(:user, user_name: "Jennifer Garner")
-    @team_1 = @user.teams.create(name: "What The Flacco")
+    @team_1 = @user_1.teams.create(name: "What The Flacco")
     @player_1 = create(:player, display_name: "Frank Gore", photo_url: 'http://static.nfl.com/static/content/public/static/img/fantasy/transparent/512x512/BRA371156.png')
     @player_2 = create(:player, display_name: "Aaron Jones", photo_url: 'http://static.nfl.com/static/content/public/static/img/fantasy/transparent/512x512/BRA371156.png')
     @player_3 = create(:player, display_name: "Tom Brady", photo_url: 'http://static.nfl.com/static/content/public/static/img/fantasy/transparent/512x512/BRA371156.png')
@@ -20,5 +20,24 @@ describe "An admin user" do
     click_link("Dashboard")
 
     expect(current_path).to eq admin_users_path
+  end
+
+  scenario "can see all regular users in the admin dashboard" do
+    visit admin_users_path
+
+    expect(page).to have_content("Jason Bourne")
+    expect(page).to have_content("Jennifer Garner")
+  end
+
+  scenario "can delete a regular user from the application" do
+    visit admin_users_path
+
+    within("#user-#{@user_1.id}") do
+      click_button "Delete"
+    end
+
+    expect(current_path).to eq admin_users_path
+    expect(page).to have_content("User deleted!")
+    expect(page).to_not have_content("Jason Bourne")
   end
 end

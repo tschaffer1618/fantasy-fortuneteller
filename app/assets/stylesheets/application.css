@@ -411,7 +411,27 @@ input[type='submit']:hover,
 }
 
 #remove-player-btn {
-  font-size: 0.8em;
+  background-color: var(--btn-color);
+  font-size: 0.7em;
+  width: 80%;
+  margin: 4px;
+}
+
+#bench-player {
+  background-color: var(--red-flash);
+  font-size: 0.7em;
+  width: 80%;
+  margin: 4px;
+
+}
+
+#unbench-player {
+  background-color: var(--green-flash);
+  font-size: 0.7em;
+  width: 80%;
+  border: none;
+  margin: 4px;
+  
 }
 
 #update-player-projections-btn {

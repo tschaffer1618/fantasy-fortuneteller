@@ -15,9 +15,9 @@
   <thead class="thead-players">
     <tr>
       <th scope="col">Players</th>
-      <th scope="col">Position</th>
+      <th scope="col"><%= sortable 'position' %></th>
       <th scope="col">Name</th>
-      <th scope="col">Projection</th>
+      <th scope="col"><%= sortable 'current_projection', 'Projection' %></th>
       <th scope="col">Active?</th>
       <th scope="col">Actions</th>
     </tr>
@@ -50,9 +50,9 @@
             </section>
             <section class="benched">
               <% if player.current_team_player(@team).benched %>
-                <%= link_to "Put me in!", "?benched=false&team_player=#{player.current_team_player(@team).id}" %>
+                <%= link_to "Put me in!", "?benched=false&team_player=#{player.current_team_player(@team).id}", class: "reg-btn", id: 'unbench-player' %>
               <% else %>
-                <%= link_to "Take me out", "?benched=true&team_player=#{player.current_team_player(@team).id}" %>
+                <%= link_to "Take me out", "?benched=true&team_player=#{player.current_team_player(@team).id}", class: "reg-btn", id: 'bench-player' %>
               <% end %>
             </section>
           </td>

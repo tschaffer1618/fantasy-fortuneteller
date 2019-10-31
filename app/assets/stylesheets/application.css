@@ -151,7 +151,9 @@ tr:nth-child(even) {
 
 .dropdown-item input[type='submit']:hover {
   background-color: var(--light-purple);
+  border: none;
   box-shadow: none;
+  color: white;
 }
 
 .dropdown-team {
@@ -248,6 +250,7 @@ tr:nth-child(even) {
   margin: 0;
   padding: 0 0.5em;
   font-size: 1.3em;
+  font-weight: normal;
   line-height: 2em;
 }
 
@@ -350,7 +353,6 @@ input[type='submit']:hover,
 .red-x-btn {
   background-color: var(--red-flash);
   border-radius: 50%;
-  box-shadow: 0 0 6px var(--dark-orange);
   color: white;
   font-weight: bold;
   height: 40px;
@@ -362,6 +364,7 @@ input[type='submit']:hover,
   color: white;
   text-decoration: none;
   background-color: red;
+  box-shadow: 0 0 6px var(--dark-orange);
 }
 
 .quick-add-player {
@@ -382,6 +385,10 @@ input[type='submit']:hover,
 
 .size-1 {
   font-size: 1.5em;
+}
+
+.submit-player-search {
+  height: 2.4em;
 }
 
 .table-proj {

@@ -21,4 +21,7 @@ class User < ApplicationRecord
 		end
 	end
 
+  def has_no_teams?
+    self.teams.empty?
+  end
 end

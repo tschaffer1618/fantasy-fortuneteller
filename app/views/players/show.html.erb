@@ -10,18 +10,20 @@
           <p><%= @player.team %> - <%= @player.position %> #<%= @player.jersey %></p>
         <% end %>
         <p>Week <%= @player.projection_week %> Projection: <%= @player.current_projection %></p>
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle orange-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Add to team
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <% current_user.teams.each do |team| %>
-              <form class="dropdown-item" action="/user/teams/<%= "#{team.id}/team_players?myPlayer=#{@player.display_name}" %>" method="post">
-                <input type="submit" id="dropdown-team" value="<%= team.name %>" />
-              </form>
-            <% end %>
+        <% unless current_user.has_no_teams? %>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle orange-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Add to team
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% current_user.teams.each do |team| %>
+                <form class="dropdown-item" action="/user/teams/<%= "#{team.id}/team_players?myPlayer=#{@player.display_name}" %>" method="post">
+                  <input type="submit" id="dropdown-team" value="<%= team.name %>" />
+                </form>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </td>
       <% if @player.defense_photo_url %>
         <td><%= image_tag "#{@player.defense_photo_url}", alt: "#{@player.team}", class: 'player-bio-image'%></td>

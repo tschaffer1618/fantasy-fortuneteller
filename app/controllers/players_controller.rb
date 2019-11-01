@@ -4,13 +4,13 @@ class PlayersController < ApplicationController
 
   def index
     if params[:position]
-      @players = Player.search_position(params[:position]).order(current_projection: :desc)
+      @players = Player.search_position(params[:position]).order(current_projection: :desc).limit(100)
     else
       players = Player.search(params[:search])
       if params[:sort] != "current_projection"
-        @players = players.order(sort_column + " " + sort_direction).order(current_projection: :desc)
+        @players = players.order(sort_column + " " + sort_direction).order(current_projection: :desc).limit(100)
       else
-        @players = players.order(sort_column + " " + sort_direction)
+        @players = players.order(sort_column + " " + sort_direction).limit(100)
       end
     end
   end

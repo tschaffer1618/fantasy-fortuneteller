@@ -1,1 +1,10 @@
-Put League Stats Here
+<h1 class="page-header">League Stats</h1>
+<h3>Current Top 5</h3>
+<section class="current-top-5">
+  <%= render partial: 'partials/top_5', locals: {title: 'Quarterbacks', class_name: 'quarterbacks', data: @facade.quarterbacks} %>
+  <%= render partial: 'partials/top_5', locals: {title: 'Running Backs', class_name: 'running-backs', data: @facade.running_backs} %>
+  <%= render partial: 'partials/top_5', locals: {title: 'Wide Receivers', class_name: 'wide-receivers', data: @facade.wide_receivers} %>
+  <%= render partial: 'partials/top_5', locals: {title: 'Tight Ends', class_name: 'tight-ends', data: @facade.tight_ends} %>
+  <%= render partial: 'partials/top_5', locals: {title: 'Kickers', class_name: 'kickers', data: @facade.kickers} %>
+  <%= render partial: 'partials/top_5', locals: {title: 'Defenses', class_name: 'defenses', data: @facade.defenses} %>
+</section>

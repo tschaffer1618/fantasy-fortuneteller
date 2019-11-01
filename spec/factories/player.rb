@@ -2,9 +2,9 @@ FactoryBot.define do
   factory :player do
     active { 1 }
     jersey { rand(1..99) }
-    lname { "Rice" }
+    sequence(:lname) {|x| "Rice #{x}"}
     fname { "Jerry" }
-    display_name { "Jerry Rice" }
+    sequence(:display_name) {|x| "Jerry Rice #{x}"}
     team { "SF" }
     position { "WR" }
     height { "6,2\"" }
@@ -12,7 +12,7 @@ FactoryBot.define do
     college { "MyString" }
     experience { "MyString" }
     birth_date { "MyString" }
-    photo_url { nil }
+    photo_url { 'https://au.res.keymedia.com/files/image/emoji.jpg' }
     bye_week { rand(4..12) }
     ffn_id { rand(1000..9999) }
     projection_week { 8 }

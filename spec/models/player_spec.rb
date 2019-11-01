@@ -87,4 +87,20 @@ describe Player, type: :model do
       expect(player.defense_photo_url).to eq defense.photo_url
     end
   end
+
+  describe 'class_methods' do
+    it 'current_top_6' do
+      qb1 = create(:player, position: 'QB', current_projection: 5)
+      qb2 = create(:player, position: 'QB', current_projection: 10)
+      qb3 = create(:player, position: 'QB', current_projection: 15)
+      qb4 = create(:player, position: 'QB', current_projection: 20)
+      qb5 = create(:player, position: 'QB', current_projection: 25)
+      qb6 = create(:player, position: 'QB', current_projection: 30)
+      qb7 = create(:player, position: 'QB', current_projection: 0)
+
+      expected = [qb6, qb5, qb4, qb3, qb2, qb1]
+
+      expect(Player.current_top_6('QB')).to eq(expected)
+    end
+  end
 end

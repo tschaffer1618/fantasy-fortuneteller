@@ -1,0 +1,21 @@
+<section class="top-6-<%= class_name %>">
+  <h3 class="top-6-header"><%= title %></h3>
+  <div class="top-6-grid">
+    <% data.each do |player| %>
+      <div class="top-6-player">
+        <div class="top-6-player-photo">
+          <%= image_tag player.photo_url, alt: 'player photo', class: 'player-image'%>
+        </div>
+        <div class="top-6-player-name">
+          <%= link_to player.display_name, player_path(player), class: 'reg-link' %>
+        </div>
+        <div class="top-6-player-team">
+          <%= "(#{player.team})" %>
+        </div>
+        <div class="top-6-player-projection">
+          <%= player.current_projection %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

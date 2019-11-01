@@ -2,11 +2,11 @@
 
 Fantasy FortuneTeller makes fantasy football easy! FF allows you to compare NFL players and their current weekly fantasy projections without being bombarded with unnecessary stats.
 
-Please visit our production app here (https://fantasy-fortuneteller.herokuapp.com/).
+Please visit our production app [here](https://fantasy-fortuneteller.herokuapp.com/).
 
 ## How Does It Work?
 
-FF makes use of a secondary Sinatra app (https://github.com/fentontaylor/fantasy_football_nerd_microservice) that holds current NFL player data and projections from several external APIs (Fantasy Football Nerd, SportsData, and nflscrapR). Within FF, you can easily make teams and add players to those teams, allowing straightforward fantasy projection comparisons for the current NFL week.
+FF makes use of a secondary Sinatra app (link [here](https://github.com/fentontaylor/fantasy_football_nerd_microservice)) that holds current NFL player data and projections from several external APIs (Fantasy Football Nerd, SportsData, and nflscrapR). Within FF, you can easily make teams and add players to those teams, allowing straightforward fantasy projection comparisons for the current NFL week.
 
 ## Getting Started
 

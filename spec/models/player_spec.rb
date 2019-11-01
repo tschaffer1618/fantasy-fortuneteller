@@ -61,5 +61,28 @@ describe Player, type: :model do
 
       expect(player.defense_photo_url).to eq defense.photo_url
     end
+
+    it '#weekly_projections_array' do
+      player = create(:player,
+            bye_week: 7,
+            projection_week: 9
+          )
+
+      projections = [{week: 2, projection: 3.6}, {week: 5, projection: 10.77}]
+      expected = [[1, 0.0], [2, 3.6], [3, 0.0], [4, 0.0], [5, 10.77], [6, 0.0], [7, 0.0], [8, 0.0], [9, 0.0]]
+
+      expect(player.weekly_projections_array(projections)).to eq expected
+    end
+
+    it '#total_year_projection' do
+      player = create(:player,
+            bye_week: 7,
+            projection_week: 9
+          )
+
+      projections = [{week: 2, projection: 3.6}, {week: 5, projection: 10.77}]
+
+      expect(player.total_year_projection(projections)).to eq 14.37
+    end
   end
 end

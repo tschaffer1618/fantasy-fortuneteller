@@ -15,9 +15,14 @@ describe 'Players' do
               experience: "20th season",
               birth_date: "October 31, 1976",
               height: "6-4",
-              weight: 220
+              weight: 220,
+              ffn_id: 13
             )
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_1)
+
+    @json_projections = File.open('./fixtures/projection_data.json')
+    stub_request(:get, "https://ff-nerd-service.herokuapp.com/all_player_projections/13?key=#{ENV['MY_FF_API_KEY']}")
+      .to_return(status: 200, body: @json_projections)
   end
 
   it ' user can view player show page' do
@@ -44,7 +49,7 @@ describe 'Players' do
     within('.dropdown-menu') do
       click_on("Not team 2")
     end
-    
+
     expect(current_path).to eq player_path(@tom_brady)
     expect(page).to have_content("Tom Brady has been added to your team!")
 

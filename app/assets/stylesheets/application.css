@@ -138,6 +138,54 @@ tr:nth-child(even) {
   display: inline-block;
 }
 
+.current-top-6 {
+  display: grid;
+ 	grid-template-columns: 1fr 1fr 1fr;
+ 	grid-template-rows: auto;
+ 	grid-gap: 2%;
+  padding: 1em;
+}
+
+.top-6-header {
+  background-color: var(--light-purple);
+  color: white;
+  text-align: center;
+  padding: 0.2em 0;
+  margin: 0;
+}
+
+section[class^='top-6-'] {
+  border: 2px solid var(--light-purple);
+}
+
+.top-6-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+ 	grid-template-rows: auto;
+}
+
+.top-6-player {
+  height: 280px;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.top-6-player-name {
+  height: 3.2em;
+}
+
+.top-6-player-photo {
+  height: 100px;
+  text-align: center;
+}
+
+.top-6-player-projection {
+  font-size: 28px;
+  font-weight: bold;
+  padding-top: 0.5em;
+}
+
 .dropdown-item input[type='submit'] {
   background-color: white;
   border:none;
@@ -177,6 +225,13 @@ tr:nth-child(even) {
   font-size: 1.2em;
   padding: 0.5em 0;
   text-align: center;
+}
+
+.sub-header-red {
+  background-color: var(--red-orange);
+  color: white;
+  text-shadow: 2px 2px #940a05;
+  padding: 0.5em 0 0.5em 7.5%;
 }
 
 .med-font {
@@ -276,6 +331,10 @@ tr:nth-child(even) {
   margin: 2%;
   text-align: center;
   word-break: break-all;
+}
+
+.page-wrapper {
+  margin: 2%;
 }
 
 .players-table td {

@@ -12,6 +12,15 @@ class Player < ApplicationRecord
     end
   end
 
+  def defense_photo_url
+    defense = Player.find_by(team: self.team, position: 'DEF')
+    defense.photo_url if defense
+  end
+
+  def current_team_player(team)
+    team_players.where(team_id: team.id).first
+  end
+
   def self.search(search = nil)
     if search
       players = where('lower(display_name) like ?', "%#{search.downcase}%")
@@ -33,13 +42,10 @@ class Player < ApplicationRecord
     end
   end
 
-  def defense_photo_url
-    defense = Player.find_by(team: self.team, position: 'DEF')
-    defense.photo_url if defense
-  end
-
-  def current_team_player(team)
-    team_players.find_by(team_id: team.id)
+  def self.current_top_6(position)
+    where(position: position)
+      .order(current_projection: :desc)
+      .limit(6)
   end
 
   def weekly_projections_array(projections)

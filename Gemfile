@@ -66,9 +66,9 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara'
   gem 'webmock'
   gem 'vcr'
+  gem 'orderly'
 end
 
 group :development do

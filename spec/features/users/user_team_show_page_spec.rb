@@ -23,9 +23,7 @@ describe "A logged in user on a team show page" do
   scenario "can click a player name to go to the player show page" do
     visit user_team_path(@team_1)
 
-    click_link("Frank Gore")
-
-    expect(current_path).to eq player_path(@player_1)
+    expect(page).to have_link("Frank Gore")
   end
 
   scenario "can remove a player from the team" do

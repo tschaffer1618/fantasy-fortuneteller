@@ -25,6 +25,16 @@ describe 'Players' do
       .to_return(status: 200, body: @json_projections)
   end
 
+  it ' user can get to the player show page through the link in the team page' do
+    team_player = @team_1.team_players.create(player: @tom_brady)
+
+    visit user_team_path(@team_1)
+
+    click_link("Tom Brady")
+
+    expect(current_path).to eq player_path(@tom_brady)
+  end
+
   it ' user can view player show page' do
     visit player_path(@tom_brady)
 

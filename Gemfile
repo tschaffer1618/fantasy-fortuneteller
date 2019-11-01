@@ -46,6 +46,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'faker'
 gem 'factory_bot_rails'
+gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'rubocop', '~> 0.75.0', require: false
 gem 'omniauth-oauth2'

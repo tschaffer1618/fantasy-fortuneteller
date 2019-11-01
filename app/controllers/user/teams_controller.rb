@@ -7,14 +7,13 @@ class User::TeamsController < ApplicationController
   end
 
   def show
+
     @team = current_user.teams.find_by_id(params[:id].to_i)
     if team_player_params[:benched]
       team_player = TeamPlayer.find(team_player_params[:team_player])
       team_player.update_attribute(:benched, team_player_params[:benched])
-      @players =  @team.players
-    else
-      @players =  @team.players
     end
+    @players = @team.players.order(sort_column + " " + sort_direction)
   end
 
   def new

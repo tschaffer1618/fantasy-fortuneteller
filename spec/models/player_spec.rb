@@ -6,6 +6,31 @@ describe Player, type: :model do
     it {should have_many(:teams).through(:team_players)}
   end
 
+  describe 'class methods' do
+    it 'search' do
+      expect(Player.search()).to eq(Player.all)
+      expect(Player.search("")).to eq(Player.all)
+      expect(Player.search('Name')).to eq([])
+      @player_1 = create(:player, display_name: 'name')
+      @player_2 = create(:player)
+      expect(Player.search('Name').first).to eq(@player_1)
+    end
+
+    it 'search_position' do
+      @player_1 = create(:player, display_name: 'name')
+      @player_2 = create(:player, position: "DEF")
+      expect(Player.search_position("all")).to eq(Player.all)
+      expect(Player.search_position("DEF").first).to eq(@player_2)
+    end
+
+    it 'current_team_player' do
+      @team = create(:team)
+      @player_1 = create(:player, display_name: 'name')
+      @team_player = @player_1.team_players.create(team_id: @team.id)
+      expect(@player_1.current_team_player(@team)).to eq(@team_player)
+    end
+  end
+
   describe 'instance methods' do
     describe '#current_status' do
       context 'player is healthy and does not have a bye week' do

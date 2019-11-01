@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :verified_user?, :current_user, :current_admin?
+  helper_method :current_user,
+                :verified_user?,
+                :current_user,
+                :current_admin?,
+                :sort_column,
+                :sort_direction
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -27,6 +32,14 @@ class ApplicationController < ActionController::Base
 
   def current_admin?
     current_user && current_user.admin?
+  end
+
+  def sort_column
+    Player.column_names.include?(params[:sort]) ? params[:sort] : "current_projection"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 
   rescue_from ActionController::RoutingError do |exception|

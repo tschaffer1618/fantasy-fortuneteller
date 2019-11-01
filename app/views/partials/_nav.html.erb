@@ -26,26 +26,26 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav text-right">
       <li class="nav-item">
-        <%= link_to 'My Teams', user_teams_path, class: "nav-link size-1" %>
+        <%= link_to 'My Teams', user_teams_path, class: "nav-link size-2" %>
       </li>
       <% if current_user && current_user.teams.present? %>
         <% current_user.teams.each do |team| %>
           <% if team.id %>
             <li class="nav-item">
-              <%= link_to team.name, user_team_path(team), class: 'nav-link' %>
+              <%= link_to "• #{team.name}", user_team_path(team), class: 'nav-link size-1' %>
             </li>
           <% end %>
         <% end %>
       <% end %>
       <li class="nav-item">
-        <a class="nav-link size-1" href="/leaguestats">League Stats</a>
+        <a class="nav-link size-2" href="/leaguestats">League Stats</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link size-1" href="/players">Player Search</a>
+        <a class="nav-link size-2" href="/players">Player Search</a>
       </li>
       <% if current_user %>
         <li class="nav-item">
-          <a class="nav-link size-1" href="/profile">My Profile</a>
+          <a class="nav-link size-2" href="/profile">My Profile</a>
         </li>
       <% end %>
     </ul>

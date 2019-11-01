@@ -136,5 +136,15 @@ context 'As a logged in user' do
         expect(page).to_not have_content(@def1.display_name)
       end
     end
+
+    scenario 'The players names are links to their show page' do
+      visit leaguestats_path
+
+      within ".top-6-quarterbacks" do
+        click_link "#{@qb4.display_name}"
+      end
+
+      expect(current_path).to eq(player_path(@qb4))
+    end
   end
 end

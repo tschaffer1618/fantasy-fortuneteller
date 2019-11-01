@@ -17,5 +17,6 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
+    @projections = UpdateService.new.get_all_projections(@player)
   end
 end

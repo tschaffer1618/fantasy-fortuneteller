@@ -15,9 +15,9 @@
   <thead class="thead-players">
     <tr>
       <th scope="col">Players</th>
-      <th scope="col">Position</th>
+      <th scope="col"><%= sortable 'position' %></th>
       <th scope="col">Name</th>
-      <th scope="col">Projection</th>
+      <th scope="col"><%= sortable 'current_projection', 'Projection' %></th>
       <th scope="col">Active?</th>
       <th scope="col">Actions</th>
     </tr>
@@ -40,21 +40,18 @@
           <% else %>
             <td class="status" style="color:#EE6352;font-size:0.7em;"><%= status %></td>
           <% end %>
-          <td>
-            <section>
-              <%= button_to "Remove", user_team_team_player_path(@team, player),
+          <td class="team-actions">
+            <div class="benched">
+              <% if player.current_team_player(@team).benched %>
+                <%= link_to "Put me in!", "?benched=false&team_player=#{player.current_team_player(@team).id}", class: "reg-btn", id: 'unbench-player' %>
+              <% else %>
+                <%= link_to "Take me out", "?benched=true&team_player=#{player.current_team_player(@team).id}", class: "reg-btn", id: 'bench-player' %>
+              <% end %>
+            </div>
+            <%= link_to "⨉", user_team_team_player_path(@team, player),
               data: { confirm: "Remove #{player.display_name} from #{@team.name}?"},
               method: :delete,
-              class: "reg-btn",
-              id: 'remove-player-btn' %>
-            </section>
-            <section class="benched">
-              <% if player.current_team_player(@team).benched %>
-                <%= link_to "Put me in!", "?benched=false&team_player=#{player.current_team_player(@team).id}" %>
-              <% else %>
-                <%= link_to "Take me out", "?benched=true&team_player=#{player.current_team_player(@team).id}" %>
-              <% end %>
-            </section>
+              class: "red-x-btn" %>
           </td>
         </tr>
       </div>

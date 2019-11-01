@@ -24,6 +24,7 @@
   --link-hover: #39A9DB;
   --page-header-blue: #6CD4FF;
   --purple-header: #563d7c;
+  --light-purple: #9276bc;
   --raspberry: #B33F62;
   --red-flash: #EE6352;
   --red-orange: #F9564F;
@@ -32,6 +33,7 @@
 
 * {
   box-sizing: border-box;
+  /* border: 1px solid red; */
 }
 
 body {
@@ -136,6 +138,24 @@ tr:nth-child(even) {
   display: inline-block;
 }
 
+.dropdown-item input[type='submit'] {
+  background-color: white;
+  border:none;
+  box-shadow: none;
+  font-size: 1.5em;
+  line-height: 2.5em;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.dropdown-item input[type='submit']:hover {
+  background-color: var(--light-purple);
+  border: none;
+  box-shadow: none;
+  color: white;
+}
+
 .dropdown-team {
   background-color: white;
   width: 100%;
@@ -176,6 +196,16 @@ tr:nth-child(even) {
   width: 100%;
 }
 
+.navbar-collapse .nav-item {
+  border-top: 3px solid var(--light-purple);
+  min-height: 5em;
+  padding-right: 1em;
+}
+
+.navbar-collapse .nav-item:nth-child(odd) {
+  background-color: #6b4c9a;
+}
+
 .orange-btn {
   background-color: var(--btn-color);
   border: 1px solid var(--btn-color);
@@ -212,6 +242,22 @@ tr:nth-child(even) {
   width: 96%;
   margin: 2%;
   text-align: center;
+}
+
+.pos-select {
+  text-align: center;
+  color: var(--darker-blue);
+  margin: 0;
+  padding: 0 0.5em;
+  font-size: 1.3em;
+  font-weight: normal;
+  line-height: 2em;
+}
+
+.pos-select:hover {
+  background-color: var(--light-purple);
+  text-decoration: none;
+  color: white;
 }
 
 .users-table {
@@ -304,6 +350,23 @@ input[type='submit']:hover,
   text-decoration: underline;
 }
 
+.red-x-btn {
+  background-color: var(--red-flash);
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  height: 40px;
+  margin-top: 30px;
+  width:  40px;
+}
+
+.red-x-btn:hover {
+  color: white;
+  text-decoration: none;
+  background-color: red;
+  box-shadow: 0 0 6px var(--dark-orange);
+}
+
 .quick-add-player {
    margin: 2% 25%;
 }
@@ -324,9 +387,18 @@ input[type='submit']:hover,
   font-size: 1.5em;
 }
 
+.submit-player-search {
+  height: 2.4em;
+}
+
 .table-proj {
   font-size: 1.2em;
   font-weight: bold;
+}
+
+.team-actions {
+  display: flex;
+  justify-content: space-around;
 }
 
 .team-projection {
@@ -345,6 +417,10 @@ input[type='submit']:hover,
 .user-info {
   font-size: 1.5em;
   padding: 2% 7.5%;
+}
+
+.users-table td {
+  font-size: 18px;
 }
 
 .welcome-logo {
@@ -396,5 +472,47 @@ input[type='submit']:hover,
 }
 
 #remove-player-btn {
-  font-size: 0.8em;
+  background-color: var(--btn-color);
+  font-size: 0.7em;
+  width: 80%;
+  margin: 4px;
+}
+
+#bench-player {
+  background-color: #ca6885;
+  border: none;
+  color: white;
+  font-size: 0.7em;
+  height: 100px;
+  margin: 4px;
+  width: 100px;
+}
+
+#bench-player:hover {
+  background-color: var(--raspberry);
+}
+
+#unbench-player {
+  background-color: var(--green-flash);
+  border: none;
+  color: white;
+  font-size: 0.7em;
+  height: 100px;
+  margin: 4px;
+  width: 100px;
+}
+
+#unbench-player:hover {
+  background-color: #3e7551;
+}
+
+#update-player-projections-btn {
+  background-color: var(--green-flash);
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  margin: 2% 37.5% 1%;
+  text-align: center;
+  padding: 0.9em 0;
+  width: 25%;
 }

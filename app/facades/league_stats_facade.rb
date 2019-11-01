@@ -1,31 +1,31 @@
 class LeagueStatsFacade
   def quarterbacks
-    top_5('QB')
+    top_6('QB')
   end
 
   def running_backs
-    top_5('RB')
+    top_6('RB')
   end
 
   def wide_receivers
-    top_5('WR')
+    top_6('WR')
   end
 
   def tight_ends
-    top_5('TE')
+    top_6('TE')
   end
 
   def kickers
-    top_5('K')
+    top_6('K')
   end
 
   def defenses
-    top_5('DEF')
+    top_6('DEF')
   end
 
   private
 
-  def top_5(pos)
-    Player.current_top_5(pos)
+  def top_6(pos)
+    Player.current_top_6(pos)
   end
 end

@@ -42,9 +42,9 @@ class Player < ApplicationRecord
     end
   end
 
-  def self.current_top_5(position)
+  def self.current_top_6(position)
     where(position: position)
       .order(current_projection: :desc)
-      .limit(5)
+      .limit(6)
   end
 end

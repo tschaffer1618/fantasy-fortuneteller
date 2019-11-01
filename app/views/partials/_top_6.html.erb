@@ -1,18 +1,18 @@
-<section class="top-5-<%= class_name %>">
-  <h3 class="top-5-header"><%= title %></h3>
-  <div class="top-5-grid">
+<section class="top-6-<%= class_name %>">
+  <h3 class="top-6-header"><%= title %></h3>
+  <div class="top-6-grid">
     <% data.each do |player| %>
-      <div class="top-5-player">
-        <div class="top-5-player-photo">
+      <div class="top-6-player">
+        <div class="top-6-player-photo">
           <%= image_tag player.photo_url, alt: 'player photo', class: 'player-image'%>
         </div>
-        <div class="top-5-player-name">
+        <div class="top-6-player-name">
           <%= player.display_name %>
         </div>
-        <div class="top-5-player-team">
+        <div class="top-6-player-team">
           <%= "(#{player.team})" %>
         </div>
-        <div class="top-5-player-projection">
+        <div class="top-6-player-projection">
           <%= player.current_projection %>
         </div>
       </div>

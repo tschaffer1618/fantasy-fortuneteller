@@ -19,14 +19,4 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     @projections = UpdateService.new.get_all_projections(@player)
   end
-
-  private
-
-  def sort_column
-    Player.column_names.include?(params[:sort]) ? params[:sort] : "current_projection"
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
-  end
 end

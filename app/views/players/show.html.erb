@@ -75,3 +75,26 @@
     </tbody>
   </table>
 <% end %>
+
+<center>
+  <table class="players-projection-table">
+    <thead class="thead-players">
+      <tr>
+        <th scope="col">Week</th>
+        <th scope="col">Projected Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @player.weekly_projections_array(@projections).each do |proj| %>
+        <tr>
+          <td><%= proj[0] %></td>
+          <td><%= proj[1] %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td>Total</td>
+        <td><%= @player.total_year_projection(@projections) %></td>
+      </tr>
+    </tbody>
+  </table>
+</center>

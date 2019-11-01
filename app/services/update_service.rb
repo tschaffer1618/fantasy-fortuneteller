@@ -35,4 +35,9 @@ class UpdateService
       player.update(projection_week: week, current_projection: 0)
     end
   end
+
+  def get_all_projections(player)
+    response = fetch("all_player_projections/#{player.ffn_id}")
+    JSON.parse(response.body, symbolize_names: true)
+  end
 end

@@ -41,4 +41,22 @@ class Player < ApplicationRecord
   def current_team_player(team)
     team_players.find_by(team_id: team.id)
   end
+
+  def weekly_projections_array(projections)
+    weeks = (1..self.projection_week).to_a
+    weeks.map do |week_number|
+      if projections.select{ |proj| proj[:week] == week_number }.empty?
+        [week_number, 0.0]
+      else
+        projection = projections.select{ |proj| proj[:week] == week_number }.first
+        [week_number, projection[:projection]]
+      end
+    end
+  end
+
+  def total_year_projection(projections)
+    projections.sum do |proj|
+      proj[:projection]
+    end
+  end
 end
